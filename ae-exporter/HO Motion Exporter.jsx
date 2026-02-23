@@ -9,10 +9,10 @@
 //   3. Arraste o .json no plugin do Figma
 //
 // CURVAS DE EASING (baseado na cor do label do layer):
-//   🔵 Azul/Roxo  → motion.ease.enter    (entrada)
+//   🔵 Azul/Roxo  → motion.ease.exit     (saída)
 //   🟢 Verde      → motion.ease.linear   (linear)
 //   🔴 Vermelho   → motion.ease.onScreen (em tela)
-//   🟡 Amarelo    → motion.ease.exit     (saída)
+//   🟡 Amarelo    → motion.ease.enter    (entrada)
 //
 // HERANÇA: Animações de Null Objects usam a label color do Null.
 //          Animações diretas usam a label color do próprio layer.
@@ -58,13 +58,13 @@
   function labelToEasing(labelIndex) {
     switch (labelIndex) {
       case 8: case 10: case 5: case 14:
-        return "motion.ease.enter";
+        return "motion.ease.exit";
       case 9: case 16: case 7: case 3:
         return "motion.ease.linear";
       case 1: case 4: case 13:
         return "motion.ease.onScreen";
       case 2: case 6: case 11:
-        return "motion.ease.exit";
+        return "motion.ease.enter";
       default:
         return null;
     }
@@ -81,8 +81,8 @@
 
   var KNOWN_CURVES = [
     { name: "motion.ease.linear",   cx1: 0.00, cx2: 1.00 },
-    { name: "motion.ease.exit",     cx1: 0.05, cx2: 0.10 },   // deceleration (ease-out)
-    { name: "motion.ease.enter",    cx1: 0.30, cx2: 0.80 },   // acceleration (ease-in)
+    { name: "motion.ease.enter",    cx1: 0.05, cx2: 0.10 },
+    { name: "motion.ease.exit",     cx1: 0.30, cx2: 0.80 },
     { name: "motion.ease.onScreen", cx1: 0.40, cx2: 0.00 }
   ];
 

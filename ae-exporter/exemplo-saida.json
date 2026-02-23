@@ -1,0 +1,130 @@
+{
+  "source": "after-effects",
+  "version": "1.0",
+  "exportedAt": "2026-02-18T12:00:00.000Z",
+  "composition": {
+    "name": "01_Tab-Cuenta-MLA-300",
+    "duration": 2000,
+    "frameRate": 30,
+    "width": 1080,
+    "height": 2340
+  },
+  "trigger": {
+    "type": "tap",
+    "target": ""
+  },
+  "layers": [
+    {
+      "name": "Header",
+      "color": "#ff0404",
+      "inPoint": 0,
+      "outPoint": 2000,
+      "parent": null,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": "0",
+          "to": "100",
+          "startTime": 0,
+          "duration": 300,
+          "easing": "motion.ease.enter"
+        },
+        {
+          "property": "position",
+          "axis": "Y",
+          "from": "-20",
+          "to": "0",
+          "startTime": 0,
+          "duration": 350,
+          "easing": "motion.ease.decelerate"
+        }
+      ]
+    },
+    {
+      "name": "Card_4",
+      "color": "#04a6ff",
+      "inPoint": 100,
+      "outPoint": 2000,
+      "parent": {
+        "name": "17. Null_Scroll",
+        "index": 17,
+        "isNull": true
+      },
+      "animations": [
+        {
+          "property": "opacity",
+          "from": "0",
+          "to": "100",
+          "startTime": 100,
+          "duration": 300,
+          "easing": "motion.ease.enter"
+        },
+        {
+          "property": "position",
+          "axis": "Y",
+          "from": "3879.8",
+          "to": "588",
+          "startTime": 0,
+          "duration": 500,
+          "easing": "motion.ease.onscreen",
+          "inheritedFrom": "17. Null_Scroll"
+        }
+      ]
+    },
+    {
+      "name": "Card_3",
+      "color": "#22c55e",
+      "inPoint": 80,
+      "outPoint": 2000,
+      "parent": {
+        "name": "17. Null_Scroll",
+        "index": 17,
+        "isNull": true
+      },
+      "animations": [
+        {
+          "property": "opacity",
+          "from": "0",
+          "to": "100",
+          "startTime": 80,
+          "duration": 250,
+          "easing": "motion.ease.enter"
+        },
+        {
+          "property": "position",
+          "axis": "Y",
+          "from": "3879.8",
+          "to": "588",
+          "startTime": 0,
+          "duration": 500,
+          "easing": "motion.ease.onscreen",
+          "inheritedFrom": "17. Null_Scroll"
+        }
+      ]
+    },
+    {
+      "name": "Tab Bar",
+      "color": "#f59e0b",
+      "inPoint": 0,
+      "outPoint": 2000,
+      "parent": null,
+      "animations": [
+        {
+          "property": "position",
+          "axis": "Y",
+          "from": "80",
+          "to": "0",
+          "startTime": 0,
+          "duration": 400,
+          "easing": "motion.ease.decelerate"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "totalLayers": 20,
+    "animatedLayers": 4,
+    "totalAnimations": 7,
+    "scriptVersion": "1.0.0"
+  }
+}

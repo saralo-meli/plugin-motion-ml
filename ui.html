@@ -1,0 +1,3140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    /* ========== Andes Design System Tokens (Mercado Livre) ========== */
+    :root {
+      /* ── Colors ── */
+      --andes-bg-primary: #ffffff;
+      --andes-text-primary: #282834;
+      --andes-text-secondary: #646587;
+      --andes-text-disabled: #9c9ebf;
+      --andes-text-inverse: #ffffff;
+      --andes-text-accent: #434ce4;
+      --andes-text-negative: #9e0015;
+
+      --andes-border-primary: #d0d4e6;
+      --andes-border-interactive-idle: #8788ab;
+      --andes-border-interactive-hover: #646587;
+      --andes-border-interactive-active: #434ce4;
+      --andes-border-accent: #434ce4;
+
+      --andes-icon-primary: #282834;
+      --andes-icon-accent: #434ce4;
+      --andes-icon-secondary: #646587;
+      --andes-icon-disabled: #9c9ebf;
+
+      --andes-interactive-loud-idle: #434ce4;
+      --andes-interactive-loud-hover: #353ac5;
+      --andes-interactive-loud-active: #272c96;
+      --andes-interactive-quiet-idle: #e9f1ff;
+      --andes-interactive-quiet-hover: #dee9ff;
+
+      --andes-surface-primary: #ffffff;
+      --andes-surface-primary-hover: #f4f5f9;
+      --andes-surface-secondary: #f4f5f9;
+      --andes-surface-secondary-hover: #e7e9f3;
+
+      --andes-fill-primary: #ffffff;
+      --andes-fill-disabled: #d0d4e6;
+
+      --andes-feedback-negative-text: #9e0015;
+      --andes-feedback-negative-border: #ed314a;
+
+      /* ── Border Radius ── */
+      --andes-radius-tiny: 4px;
+      --andes-radius-small: 8px;
+      --andes-radius-medium: 12px;
+      --andes-radius-large: 16px;
+      --andes-radius-xlarge: 20px;
+      --andes-radius-full: 9999px;
+
+      /* ── Typography ── */
+      --andes-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --andes-heading-xlarge-size: 20px;
+      --andes-heading-xlarge-lh: 24px;
+      --andes-heading-large-size: 18px;
+      --andes-heading-large-lh: 22px;
+      --andes-heading-medium-size: 16px;
+      --andes-heading-medium-lh: 20px;
+      --andes-heading-small-size: 14px;
+      --andes-heading-small-lh: 18px;
+      --andes-body-medium-size: 14px;
+      --andes-body-medium-lh: 18px;
+      --andes-body-small-size: 12px;
+      --andes-body-small-lh: 16px;
+      --andes-weight-regular: 400;
+      --andes-weight-semibold: 600;
+      --andes-weight-bold: 700;
+
+      /* ── Spacing ── */
+      --andes-space-tiny: 4px;
+      --andes-space-xsmall: 6px;
+      --andes-space-small: 8px;
+      --andes-space-medium: 12px;
+      --andes-space-large: 16px;
+      --andes-space-xlarge: 20px;
+      --andes-space-huge: 24px;
+      --andes-space-xhuge: 32px;
+
+      /* ── Component Sizes ── */
+      --andes-input-height-large: 48px;
+      --andes-input-height-small: 32px;
+      --andes-button-height-large: 48px;
+    }
+
+    /* ========== Reset & Base ========== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--andes-font-family);
+      font-size: var(--andes-body-medium-size);
+      line-height: var(--andes-body-medium-lh);
+      color: var(--andes-text-primary);
+      background: var(--andes-bg-primary);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hidden { display: none !important; }
+
+    /* ========== Wizard Header ========== */
+    .wizard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 23px 20px 0;
+      flex-shrink: 0;
+    }
+    .wizard-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--andes-space-small);
+    }
+    .wizard-title {
+      font-size: var(--andes-heading-large-size);
+      font-weight: var(--andes-weight-semibold);
+      line-height: var(--andes-heading-large-lh);
+      color: var(--andes-text-primary);
+    }
+    .wizard-step-indicator {
+      font-size: var(--andes-heading-large-size);
+      font-weight: var(--andes-weight-semibold);
+      line-height: var(--andes-heading-large-lh);
+      color: var(--andes-text-primary);
+    }
+    .btn-back {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--andes-space-tiny);
+      color: var(--andes-icon-secondary);
+      font-size: 16px;
+      border-radius: var(--andes-radius-small);
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .btn-back:hover {
+      background: var(--andes-surface-secondary);
+      color: var(--andes-icon-primary);
+    }
+    .wizard-header-actions {
+      display: flex;
+      gap: var(--andes-space-tiny);
+    }
+    .wizard-header-actions .btn-icon-sm {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--andes-icon-secondary);
+      border-radius: var(--andes-radius-small);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .wizard-header-actions .btn-icon-sm:hover {
+      background: var(--andes-surface-secondary);
+      color: var(--andes-icon-primary);
+    }
+
+    .wizard-divider {
+      height: 1px;
+      background: var(--andes-border-primary);
+      margin: var(--andes-space-large) 0 0;
+      flex-shrink: 0;
+    }
+
+    /* ========== Wizard Step (page) ========== */
+    .wizard-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .step-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--andes-space-xlarge);
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-xlarge);
+    }
+    .step-footer {
+      flex-shrink: 0;
+      padding: var(--andes-space-xlarge) 25px;
+    }
+
+    /* ========== Section Labels ========== */
+    .section-label {
+      font-size: var(--andes-heading-small-size);
+      font-weight: var(--andes-weight-semibold);
+      line-height: var(--andes-heading-small-lh);
+      color: var(--andes-text-primary);
+    }
+    .section-label-large {
+      font-size: var(--andes-heading-xlarge-size);
+      font-weight: var(--andes-weight-bold);
+      line-height: var(--andes-heading-xlarge-lh);
+      color: var(--andes-text-primary);
+    }
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ========== Andes Card (frame selection, container) ========== */
+    .andes-card {
+      background: var(--andes-fill-primary);
+      border: 1px solid var(--andes-border-accent);
+      border-radius: var(--andes-radius-xlarge);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 151px;
+      transition: all 0.2s;
+    }
+    .andes-card.empty {
+      border-style: dashed;
+      border-color: var(--andes-border-primary);
+    }
+    .andes-card .card-frame-name {
+      font-size: var(--andes-heading-small-size);
+      font-weight: var(--andes-weight-bold);
+      line-height: var(--andes-heading-small-lh);
+      color: var(--andes-text-primary);
+      text-align: center;
+    }
+    .andes-card .card-frame-meta {
+      font-size: var(--andes-body-small-size);
+      color: var(--andes-text-secondary);
+      text-align: center;
+      margin-top: 2px;
+    }
+    .andes-card .card-placeholder {
+      font-size: var(--andes-body-medium-size);
+      color: var(--andes-text-disabled);
+      text-align: center;
+    }
+
+    /* ========== Andes Button (Loud / Primary) ========== */
+    .btn-loud {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--andes-space-small);
+      width: 100%;
+      height: var(--andes-button-height-large);
+      padding: 0 var(--andes-space-large);
+      background: var(--andes-interactive-loud-idle);
+      color: var(--andes-text-inverse);
+      border: none;
+      border-radius: var(--andes-radius-medium);
+      font-family: var(--andes-font-family);
+      font-size: var(--andes-body-medium-size);
+      font-weight: var(--andes-weight-semibold);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-loud:hover { background: var(--andes-interactive-loud-hover); }
+    .btn-loud:active { background: var(--andes-interactive-loud-active); transform: scale(0.98); }
+    .btn-loud:disabled {
+      background: var(--andes-fill-disabled);
+      color: var(--andes-text-disabled);
+      cursor: not-allowed;
+      transform: none;
+    }
+    /* ========== Andes Button (Quiet / Secondary) ========== */
+    .btn-quiet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--andes-space-small);
+      width: 100%;
+      height: 40px;
+      padding: 0 var(--andes-space-large);
+      background: var(--andes-interactive-quiet-idle);
+      color: var(--andes-interactive-loud-idle);
+      border: none;
+      border-radius: var(--andes-radius-small);
+      font-family: var(--andes-font-family);
+      font-size: var(--andes-body-medium-size);
+      font-weight: var(--andes-weight-semibold);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-quiet:hover { background: var(--andes-interactive-quiet-hover); }
+    .btn-quiet:active { transform: scale(0.98); }
+
+    .btn-loud .spinner {
+      display: none;
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    .btn-loud.loading .spinner { display: block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ========== Andes Textfield ========== */
+    .andes-field {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .andes-field label {
+      font-size: var(--andes-body-medium-size);
+      font-weight: var(--andes-weight-regular);
+      line-height: var(--andes-body-medium-lh);
+      color: var(--andes-text-primary);
+    }
+    .andes-field input[type="text"],
+    .andes-field input[type="number"],
+    .andes-field select {
+      width: 100%;
+      height: var(--andes-input-height-large);
+      padding: 0 var(--andes-space-medium);
+      border: 1px solid var(--andes-border-interactive-idle);
+      border-radius: var(--andes-radius-medium);
+      font-family: var(--andes-font-family);
+      font-size: var(--andes-body-medium-size);
+      line-height: var(--andes-body-medium-lh);
+      color: var(--andes-text-primary);
+      background: var(--andes-fill-primary);
+      transition: border-color 0.15s ease;
+    }
+    .andes-field input:hover, .andes-field select:hover {
+      border-color: var(--andes-border-interactive-hover);
+    }
+    .andes-field input:focus, .andes-field select:focus {
+      outline: none;
+      border-color: var(--andes-border-interactive-active);
+      box-shadow: 0 0 0 1px var(--andes-border-interactive-active);
+    }
+    .andes-field input::placeholder {
+      color: var(--andes-text-disabled);
+    }
+    .andes-field select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23646587' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 12px;
+      padding-right: 32px;
+      cursor: pointer;
+    }
+
+    .field-row {
+      display: flex;
+      gap: var(--andes-space-xlarge);
+      align-items: flex-start;
+    }
+    .field-row .andes-field { flex: 1; min-width: 0; }
+
+    /* ========== Color picker field ========== */
+    .color-field {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .color-field label {
+      font-size: var(--andes-body-medium-size);
+      font-weight: var(--andes-weight-regular);
+      line-height: var(--andes-body-medium-lh);
+      color: var(--andes-text-primary);
+      text-align: center;
+    }
+    .color-field .color-input-wrap {
+      width: 48px;
+      height: var(--andes-input-height-large);
+      border: 1px solid var(--andes-border-interactive-idle);
+      border-radius: var(--andes-radius-medium);
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: var(--andes-fill-primary);
+    }
+    .color-field .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--andes-radius-tiny);
+      border: none;
+      cursor: pointer;
+    }
+    .color-field input[type="color"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* ========== Color presets (quick pick swatches) ========== */
+    .color-presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .color-presets label {
+      font-size: 11px;
+      color: var(--andes-text-secondary);
+      width: 100%;
+      margin-bottom: -2px;
+    }
+    .color-preset-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--andes-radius-tiny);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.1s;
+      box-sizing: border-box;
+    }
+    .color-preset-swatch:hover {
+      transform: scale(1.15);
+    }
+    .color-preset-swatch.active {
+      border-color: var(--andes-text-primary);
+    }
+
+    /* ========== Add link (accent color, + icon) ========== */
+    .add-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--andes-space-tiny);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--andes-font-family);
+      font-size: var(--andes-body-small-size);
+      font-weight: var(--andes-weight-semibold);
+      line-height: var(--andes-body-small-lh);
+      color: var(--andes-text-accent);
+      transition: color 0.15s;
+    }
+    .add-link:hover { color: var(--andes-interactive-loud-hover); }
+    .add-link svg { flex-shrink: 0; }
+    .add-link-bottom {
+      width: 100%;
+      justify-content: center;
+      margin-top: var(--andes-space-medium);
+      padding: var(--andes-space-small) 0;
+      border-top: 1px solid var(--andes-border-default);
+    }
+
+    /* ========== Delete link (negative color) ========== */
+    .delete-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--andes-space-tiny);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--andes-font-family);
+      font-size: var(--andes-body-small-size);
+      font-weight: var(--andes-weight-semibold);
+      line-height: var(--andes-body-small-lh);
+      color: var(--andes-text-negative);
+      padding: 45px 0 19px;
+      transition: opacity 0.15s;
+    }
+    .delete-link:hover { opacity: 0.8; }
+    .delete-link svg { flex-shrink: 0; }
+
+    /* ========== Component Card (Track) ========== */
+    .component-card {
+      background: #f5f5f5;
+      border: 1px solid var(--andes-border-primary);
+      border-radius: var(--andes-radius-xlarge);
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+    .component-card + .component-card {
+      margin-top: var(--andes-space-medium);
+    }
+
+    .component-card-inner {
+      padding: var(--andes-space-huge);
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-xhuge);
+    }
+
+    /* Component header row */
+    .comp-header-row {
+      display: flex;
+      align-items: center;
+      gap: var(--andes-space-tiny);
+      cursor: pointer;
+      user-select: none;
+    }
+    .comp-color-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--andes-radius-tiny);
+      flex-shrink: 0;
+    }
+    .comp-name-text {
+      flex: 1;
+      font-size: var(--andes-heading-medium-size);
+      font-weight: var(--andes-weight-bold);
+      line-height: var(--andes-heading-medium-lh);
+      color: var(--andes-text-primary);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .chevron-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      color: var(--andes-icon-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .chevron-btn.open {
+      transform: rotate(180deg);
+    }
+    .chevron-btn svg { pointer-events: none; }
+
+    /* Component header actions (delete, reorder) */
+    .comp-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .btn-icon-mini {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 2px;
+      color: var(--andes-icon-secondary);
+      border-radius: var(--andes-radius-tiny);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      transition: all 0.15s;
+      opacity: 0;
+    }
+    .comp-header-row:hover .btn-icon-mini {
+      opacity: 1;
+    }
+    .btn-icon-mini:hover {
+      background: var(--andes-surface-secondary-hover);
+      color: var(--andes-icon-primary);
+    }
+    .btn-icon-mini.danger:hover {
+      color: var(--andes-feedback-negative-text);
+      background: #ffeaed;
+    }
+    .btn-icon-mini:disabled {
+      opacity: 0 !important;
+      cursor: default;
+    }
+    .comp-header-row:hover .btn-icon-mini:disabled {
+      opacity: 0.3 !important;
+    }
+
+    /* Component body (collapsible) */
+    .comp-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-xlarge);
+    }
+    .comp-body.collapsed { display: none; }
+
+    /* Name + color row inside component */
+    .comp-name-color-row {
+      display: flex;
+      gap: var(--andes-space-xlarge);
+      align-items: flex-end;
+    }
+    .comp-name-color-row .andes-field { flex: 1; }
+
+    .comp-divider {
+      height: 1px;
+      background: var(--andes-border-primary);
+    }
+
+    /* Properties section header */
+    .props-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .props-section-title {
+      font-size: var(--andes-heading-medium-size);
+      font-weight: var(--andes-weight-bold);
+      line-height: var(--andes-heading-medium-lh);
+      color: var(--andes-text-primary);
+    }
+
+    /* ========== Property Card (nested inside component) ========== */
+    .property-card {
+      background: var(--andes-fill-primary);
+      border: 1px solid var(--andes-border-primary);
+      border-radius: var(--andes-radius-xlarge);
+      overflow: hidden;
+      padding: var(--andes-space-huge);
+      transition: border-color 0.15s;
+    }
+    .property-card + .property-card {
+      margin-top: var(--andes-space-medium);
+    }
+
+    .prop-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+    }
+    .prop-header-title {
+      font-size: var(--andes-heading-small-size);
+      font-weight: var(--andes-weight-semibold);
+      line-height: var(--andes-heading-small-lh);
+      color: var(--andes-text-primary);
+      flex: 1;
+    }
+
+    .prop-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-xhuge);
+      margin-top: var(--andes-space-xhuge);
+    }
+    .prop-body.collapsed { display: none; margin-top: 0; }
+
+    /* ========== Radio Buttons ========== */
+    .radio-group-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-small);
+    }
+    .radio-group-label {
+      font-size: var(--andes-body-medium-size);
+      font-weight: var(--andes-weight-regular);
+      line-height: var(--andes-body-medium-lh);
+      color: var(--andes-text-primary);
+    }
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-large);
+    }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: var(--andes-space-small);
+      cursor: pointer;
+      font-size: var(--andes-body-medium-size);
+      color: var(--andes-text-primary);
+    }
+    .radio-option input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--andes-interactive-loud-idle);
+      cursor: pointer;
+      margin: 0;
+    }
+
+    /* ========== Timing fields section ========== */
+    .timing-fields {
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-large);
+    }
+
+    /* ========== Delete property container ========== */
+    .delete-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ========== Field Hint ========== */
+    .field-hint {
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--andes-text-secondary);
+      margin: calc(-1 * var(--andes-space-tiny)) 0 var(--andes-space-small) 0;
+      padding: 0;
+      opacity: 0.7;
+    }
+
+    /* ========== Trigger Preview ========== */
+    .trigger-preview {
+      font-size: var(--andes-body-small-size);
+      line-height: var(--andes-body-small-lh);
+      color: var(--andes-text-secondary);
+      background: var(--andes-bg-secondary);
+      padding: var(--andes-space-small) var(--andes-space-medium);
+      border-radius: var(--andes-radius-large);
+      margin-top: calc(-1 * var(--andes-space-small));
+      font-style: italic;
+    }
+    .trigger-preview:empty {
+      display: none;
+    }
+
+    /* ========== Log ========== */
+    .log-container {
+      flex-shrink: 0;
+      border-top: 1px solid var(--andes-border-primary);
+      padding: var(--andes-space-small) var(--andes-space-large);
+      max-height: 60px;
+      overflow-y: auto;
+    }
+    .log-list { display: flex; flex-direction: column; gap: 2px; }
+    .log-entry {
+      font-size: var(--andes-body-small-size);
+      line-height: var(--andes-body-small-lh);
+      color: var(--andes-text-secondary);
+      padding: 2px var(--andes-space-small);
+      border-radius: var(--andes-radius-tiny);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--andes-space-xsmall);
+    }
+    .log-entry.error { color: var(--andes-feedback-negative-text); background: #ffeaed; }
+    .log-entry.success { color: #1a8a3f; background: #e6f9e6; }
+    .log-time { color: var(--andes-text-disabled); font-size: 10px; white-space: nowrap; flex-shrink: 0; }
+
+    /* ========== AE Import Drop Zone ========== */
+    .ae-import-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--andes-space-medium);
+      color: var(--andes-text-disabled);
+      font-size: var(--andes-body-small-size);
+      font-weight: var(--andes-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ae-import-divider::before,
+    .ae-import-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--andes-border-primary);
+    }
+
+    .ae-import-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-small);
+    }
+    .ae-import-section .section-label {
+      margin-bottom: 0;
+    }
+
+    .ae-drop-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--andes-space-small);
+      padding: var(--andes-space-xhuge) var(--andes-space-xlarge);
+      border: 2px dashed var(--andes-border-primary);
+      border-radius: var(--andes-radius-xlarge);
+      background: var(--andes-surface-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 120px;
+      text-align: center;
+    }
+    .ae-drop-zone:hover {
+      border-color: var(--andes-border-interactive-hover);
+      background: var(--andes-surface-secondary-hover);
+    }
+    .ae-drop-zone.dragover {
+      border-color: var(--andes-border-accent);
+      background: var(--andes-interactive-quiet-idle);
+      border-style: solid;
+    }
+    .ae-drop-zone .drop-icon {
+      color: var(--andes-icon-secondary);
+      transition: color 0.2s;
+    }
+    .ae-drop-zone:hover .drop-icon,
+    .ae-drop-zone.dragover .drop-icon {
+      color: var(--andes-icon-accent);
+    }
+    .ae-drop-zone .drop-title {
+      font-size: var(--andes-heading-small-size);
+      font-weight: var(--andes-weight-semibold);
+      line-height: var(--andes-heading-small-lh);
+      color: var(--andes-text-primary);
+    }
+    .ae-drop-zone .drop-subtitle {
+      font-size: var(--andes-body-small-size);
+      line-height: var(--andes-body-small-lh);
+      color: var(--andes-text-secondary);
+    }
+    .ae-drop-zone .drop-subtitle a {
+      color: var(--andes-text-accent);
+      text-decoration: none;
+      font-weight: var(--andes-weight-semibold);
+      cursor: pointer;
+    }
+    .ae-drop-zone .drop-subtitle a:hover {
+      text-decoration: underline;
+    }
+
+    /* Import success state */
+    .ae-drop-zone.success {
+      border-color: #1bc47d;
+      border-style: solid;
+      background: #e6f9e6;
+    }
+    .ae-drop-zone.success .drop-icon { color: #1a8a3f; }
+
+    .ae-import-status {
+      display: flex;
+      flex-direction: column;
+      gap: var(--andes-space-tiny);
+      align-items: center;
+    }
+    .ae-import-status .status-title {
+      font-size: var(--andes-heading-small-size);
+      font-weight: var(--andes-weight-bold);
+      color: #1a8a3f;
+    }
+    .ae-import-status .status-details {
+      font-size: var(--andes-body-small-size);
+      color: var(--andes-text-secondary);
+    }
+    .ae-import-status .status-filename {
+      font-size: 11px;
+      color: var(--andes-text-disabled);
+      font-style: italic;
+    }
+
+    /* Import error state */
+    .ae-drop-zone.error {
+      border-color: var(--andes-feedback-negative-border);
+      border-style: solid;
+      background: #ffeaed;
+    }
+    .ae-drop-zone.error .drop-icon { color: var(--andes-feedback-negative-text); }
+    .ae-import-error {
+      font-size: var(--andes-body-small-size);
+      color: var(--andes-feedback-negative-text);
+      text-align: center;
+    }
+
+    /* ========== Generate Button Error Message ========== */
+    .generate-error-msg {
+      font-size: var(--andes-body-small-size);
+      line-height: var(--andes-body-small-lh);
+      color: var(--andes-feedback-negative-text);
+      text-align: center;
+      padding: var(--andes-space-tiny) var(--andes-space-small);
+      display: none;
+    }
+    .generate-error-msg.visible {
+      display: block;
+    }
+
+    /* ========== Field Validation Errors ========== */
+    .andes-field input.field-error {
+      border-color: var(--andes-feedback-negative-text) !important;
+      background: #FFF5F5;
+    }
+    .andes-field input.field-error:focus {
+      border-color: var(--andes-feedback-negative-text) !important;
+      box-shadow: 0 0 0 1px var(--andes-feedback-negative-text);
+    }
+    .field-validation-msg {
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--andes-feedback-negative-text);
+      margin-top: 4px;
+      display: none;
+    }
+    .field-validation-msg.visible {
+      display: block;
+    }
+
+    /* Property card com erro (borda sutil vermelha quando fechado) */
+    .property-card.has-field-error {
+      border-color: var(--andes-feedback-negative-text);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hidden file input for JSON import -->
+  <input type="file" id="fileImport" accept=".json" class="hidden">
+
+  <!-- ============ WIZARD HEADER ============ -->
+  <div class="wizard-header">
+    <div class="wizard-header-left">
+      <button class="btn-back hidden" id="btnBack" title="Voltar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 5L7 10L12 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="wizard-title">Motion Timeline HO</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <div class="wizard-header-actions" id="headerActions" style="display:none;">
+      </div>
+      <span class="wizard-step-indicator" id="stepIndicator">1/3</span>
+    </div>
+  </div>
+  <div class="wizard-divider"></div>
+
+  <!-- ============ STEP 1: FRAME SELECTION ============ -->
+  <div class="wizard-step" id="step1">
+    <div class="step-content">
+      <span class="section-label">Selecione um frame para inserir a timeline</span>
+
+      <div class="andes-card" id="targetCard">
+        <div id="targetPlaceholder" class="card-placeholder">Clique em um Frame ou Section no canvas</div>
+        <div id="targetInfo" style="display:none;">
+          <div class="card-frame-name" id="targetName"></div>
+          <div class="card-frame-meta" id="targetMeta"></div>
+        </div>
+      </div>
+
+      <button class="btn-quiet" id="btnSelectTarget">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="7" cy="7" r="2" fill="currentColor"/>
+        </svg>
+        Usar frame selecionado
+      </button>
+    </div>
+    <div class="step-footer">
+      <button class="btn-loud" id="btnNext1" disabled>Proximo passo</button>
+    </div>
+  </div>
+
+  <!-- ============ STEP 2: TIMELINE DETAILS + TRIGGER ============ -->
+  <div class="wizard-step hidden" id="step2">
+    <div class="step-content">
+      <span class="section-label">Defina os detalhes da timeline</span>
+
+      <div class="andes-field">
+        <label>Titulo do Step</label>
+        <input type="text" id="stepTitle" placeholder="Ex: Step 1 - Entrada dos cards">
+      </div>
+
+      <div class="andes-field">
+        <label>Escala de tempo da timeline</label>
+        <select id="msPerTick">
+          <option value="10">10ms</option>
+          <option value="50" selected>50ms (Padrao)</option>
+          <option value="100">100ms</option>
+          <option value="200">200ms</option>
+          <option value="250">250ms</option>
+          <option value="500">500ms</option>
+        </select>
+      </div>
+
+      <span class="section-label" style="margin-top: var(--andes-space-xhuge);">Defina os detalhes do trigger</span>
+
+      <div class="andes-field">
+        <label>Tipo de Trigger</label>
+        <select id="triggerType">
+          <option value="tap">On TAP</option>
+          <option value="automatic">AUTOMATIC</option>
+          <option value="swipe">On SWIPE</option>
+          <option value="scroll">On SCROLL</option>
+        </select>
+      </div>
+
+      <div class="andes-field" id="triggerComponentField">
+        <label>Nome do componente (trigger)</label>
+        <input type="text" id="triggerComponentName" placeholder="Ex: Button CTA, Card header...">
+        <p class="field-validation-msg" id="triggerComponentError">Preencha o nome do componente para continuar</p>
+      </div>
+
+      <p id="triggerPreview" class="trigger-preview"></p>
+    </div>
+    <div class="step-footer">
+      <button class="btn-loud" id="btnNext2" disabled>Proximo passo</button>
+      <div class="generate-error-msg" id="step2ErrorMsg"></div>
+    </div>
+  </div>
+
+  <!-- ============ STEP 3: TRACKS / COMPONENTS ============ -->
+  <div class="wizard-step hidden" id="step3">
+    <div class="step-content">
+      <div class="section-header-row">
+        <span class="section-label-large">Defina os tracks</span>
+        <button class="add-link" id="btnAddComponent">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Adicionar Componente
+        </button>
+      </div>
+
+      <div id="trackList"></div>
+
+      <!-- Divider "ou" -->
+      <div class="ae-import-divider">ou importe do After Effects</div>
+
+      <!-- AE JSON Import Drop Zone -->
+      <div class="ae-drop-zone" id="aeDropZone">
+        <div class="drop-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <path d="M12 16V4m0 0L7 9m5-5l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 17v2a3 3 0 003 3h12a3 3 0 003-3v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="drop-title">Arraste o JSON aqui</span>
+        <span class="drop-subtitle">ou <a id="aeFilePicker">selecione um arquivo</a></span>
+        <span class="drop-subtitle" style="font-size:11px; color:var(--andes-text-disabled);">Aceita .json exportado do After Effects</span>
+      </div>
+      <input type="file" id="aeFileInput" accept=".json" class="hidden">
+    </div>
+    <div class="step-footer">
+      <button class="btn-loud" id="btnGenerate" disabled>
+        <span class="spinner"></span>
+        <span class="btn-label">Gerar timeline</span>
+      </button>
+      <div class="generate-error-msg" id="generateErrorMsg"></div>
+    </div>
+  </div>
+
+  <!-- ============ LOG BAR (oculto) ============ -->
+  <div class="log-container" style="display:none;">
+    <div class="log-list" id="logList"></div>
+  </div>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // ================================================================
+    // CONSTANTS
+    // ================================================================
+
+    var EASING_PRESETS = [
+      { value: 'motion.ease.onscreen',   label: 'On Screen' },
+      { value: 'motion.ease.exit',       label: 'Exit' },
+      { value: 'motion.ease.enter',      label: 'Enter' },
+      { value: 'motion.ease.linear',     label: 'Linear' }
+    ];
+
+    var PROPERTY_TYPES = [
+      { value: 'position', label: 'Position' },
+      { value: 'opacity',  label: 'Opacity' },
+      { value: 'scale',    label: 'Scale' },
+      { value: 'rotation', label: 'Rotation' },
+      { value: 'color',    label: 'Color' },
+      { value: 'state',    label: 'State' }
+    ];
+
+    var DURATION_OPTIONS = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 1000, 1200, 1500, 2000, 3000];
+    var DELAY_OPTIONS = [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500];
+
+    var COLOR_PRESETS = [
+      '#434CE4', '#FBB718', '#D75151', '#923BAE',
+      '#1F9429', '#317177', '#B7C66B', '#4956A3'
+    ];
+    var TRACK_COLORS = COLOR_PRESETS;
+
+    // ================================================================
+    // STATE
+    // ================================================================
+
+    var state = {
+      currentStep: 1,
+      targetNodeId: null,
+      targetNodeName: null,
+      targetNodeMeta: '',
+      tracks: [],
+      msPerTick: 50,
+      triggerType: 'tap',
+      triggerAction: '',
+      triggerComponentName: '',
+      stepTitle: ''
+    };
+
+    var nextTrackId = 1;
+    var nextAnimId = 1;
+    var expandedComps = {};   // track ID → boolean
+    var expandedProps = {};   // anim ID → boolean
+    var validationActive = false;  // true após clicar CTA disabled → mostra erros inline
+
+    var STORAGE_KEY = 'motion_timeline_wizard_state';
+
+    // ================================================================
+    // PERSISTENCE
+    // ================================================================
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          targetNodeId: state.targetNodeId,
+          targetNodeName: state.targetNodeName,
+          targetNodeMeta: state.targetNodeMeta,
+          tracks: state.tracks,
+          msPerTick: state.msPerTick,
+          triggerType: state.triggerType,
+          triggerAction: state.triggerAction,
+          triggerComponentName: state.triggerComponentName,
+          stepTitle: state.stepTitle,
+          nextTrackId: nextTrackId,
+          nextAnimId: nextAnimId,
+          currentStep: state.currentStep
+        }));
+      } catch (e) { /* silently fail */ }
+    }
+
+    function loadState() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        var d = JSON.parse(raw);
+        if (d.tracks) state.tracks = d.tracks;
+        if (d.targetNodeId) { state.targetNodeId = d.targetNodeId; state.targetNodeName = d.targetNodeName; state.targetNodeMeta = d.targetNodeMeta || ''; }
+        if (d.msPerTick) state.msPerTick = d.msPerTick;
+        if (d.triggerType) state.triggerType = d.triggerType;
+        if (d.triggerAction !== undefined) state.triggerAction = d.triggerAction;
+        if (d.triggerComponentName !== undefined) state.triggerComponentName = d.triggerComponentName;
+        if (d.stepTitle !== undefined) state.stepTitle = d.stepTitle;
+        if (d.nextTrackId) nextTrackId = d.nextTrackId;
+        if (d.nextAnimId) nextAnimId = d.nextAnimId;
+        if (d.currentStep) state.currentStep = d.currentStep;
+      } catch (e) { /* silently fail */ }
+    }
+
+    // ================================================================
+    // EXPORT / IMPORT JSON
+    // ================================================================
+
+    function exportJSON() {
+      var data = {
+        version: '2.0',
+        msPerTick: state.msPerTick,
+        stepTitle: state.stepTitle,
+        triggerType: state.triggerType,
+        triggerComponentName: state.triggerComponentName || '',
+        triggerLabel: '',
+        triggerAction: buildTriggerActionText(),
+        tracks: state.tracks.map(function(t) {
+          return {
+            name: t.name,
+            color: t.color,
+            animations: t.animations.map(function(a) {
+              return { preset: a.preset, properties: a.properties, duration: a.duration, delay: a.delay, easing: a.easing };
+            })
+          };
+        })
+      };
+      var json = JSON.stringify(data, null, 2);
+      var blob = new Blob([json], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = 'motion-timeline-config.json';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      addLog('Configuracao exportada como JSON.', 'success');
+    }
+
+    function importJSON(file) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          var data = JSON.parse(e.target.result);
+          if (!data.tracks || !Array.isArray(data.tracks)) { addLog('JSON invalido.', 'error'); return; }
+
+          state.tracks = [];
+          nextTrackId = 1; nextAnimId = 1;
+          expandedComps = {}; expandedProps = {};
+          validationActive = false;
+
+          if (data.msPerTick) state.msPerTick = data.msPerTick;
+          if (data.stepTitle !== undefined) state.stepTitle = data.stepTitle || '';
+          if (data.triggerType) state.triggerType = data.triggerType;
+          if (data.triggerAction !== undefined) state.triggerAction = data.triggerAction;
+          if (data.triggerComponentName !== undefined) state.triggerComponentName = data.triggerComponentName;
+          if (data.triggerLabel && !data.triggerAction) state.triggerAction = data.triggerLabel;
+
+          data.tracks.forEach(function(t) {
+            var track = createTrack(t.name, t.color);
+            if (t.animations) {
+              t.animations.forEach(function(a) {
+                var anim = createAnimation(track.id);
+                if (anim) {
+                  anim.preset = a.preset || 'position';
+                  anim.properties = a.properties || [{ type: 'position', axis: 'Y', from: '', to: '' }];
+                  anim.duration = a.duration || 300;
+                  anim.delay = a.delay || 0;
+                  // REGRA: opacidade SEMPRE usa curva linear
+                  anim.easing = (anim.preset === 'opacity') ? 'motion.ease.linear' : (a.easing || 'motion.ease.onscreen');
+                }
+              });
+            }
+          });
+
+          saveState();
+          goToStep(3);
+          renderStep3();
+          updateGenerateButton();
+          addLog(state.tracks.length + ' tracks importadas.', 'success');
+        } catch (err) { addLog('Erro: ' + err.message, 'error'); }
+      };
+      reader.readAsText(file);
+    }
+
+    // ================================================================
+    // AFTER EFFECTS JSON IMPORT
+    // ================================================================
+
+    var EASING_MAP = {
+      'ease': 'motion.ease.onscreen',
+      'ease-in': 'motion.ease.enter',
+      'ease-out': 'motion.ease.exit',
+      'ease-in-out': 'motion.ease.onscreen',
+      'linear': 'motion.ease.linear',
+      'enter': 'motion.ease.enter',
+      'exit': 'motion.ease.exit',
+      'onscreen': 'motion.ease.onscreen',
+      'standard': 'motion.ease.onscreen',
+      'decelerate': 'motion.ease.exit',
+      'accelerate': 'motion.ease.enter'
+    };
+
+    /**
+     * Resolve o easing do AE para o preset do plugin.
+     * Se já for um preset válido (motion.ease.*), mantém.
+     * Senão tenta mapear pelo nome curto.
+     */
+    function resolveEasing(easingStr) {
+      if (!easingStr) return 'motion.ease.onscreen';
+      // Já é um preset válido do plugin
+      if (easingStr.indexOf('motion.ease.') === 0) return easingStr;
+      // Tentar mapear pelo nome curto
+      var key = easingStr.toLowerCase().replace(/[\s_-]+/g, '-');
+      return EASING_MAP[key] || 'motion.ease.onscreen';
+    }
+
+    /**
+     * Calcula msPerTick inteligente baseado na duração total.
+     */
+    function calculateMsPerTick(totalDurationMs) {
+      if (totalDurationMs <= 500) return 25;
+      if (totalDurationMs <= 1000) return 50;
+      if (totalDurationMs <= 2000) return 100;
+      if (totalDurationMs <= 5000) return 200;
+      return 500;
+    }
+
+    /**
+     * Converte um objeto AE animation para o formato interno do plugin.
+     * Retorna { preset, properties, duration, delay, easing }.
+     */
+    function convertAEAnimation(aeAnim) {
+      var prop = aeAnim.property || 'opacity';
+      var result = {
+        preset: prop,
+        properties: [],
+        duration: aeAnim.duration || 300,
+        delay: aeAnim.startTime || 0,
+        // REGRA: opacidade SEMPRE usa curva linear
+        easing: (prop === 'opacity') ? 'motion.ease.linear' : resolveEasing(aeAnim.easing)
+      };
+
+      switch (prop) {
+        case 'position':
+          result.properties = [{
+            type: 'position',
+            axis: aeAnim.axis || 'Y',
+            from: String(aeAnim.from || '0'),
+            to: String(aeAnim.to || '0')
+          }];
+          break;
+        case 'scale':
+          result.properties = [{
+            type: 'scale',
+            dimension: aeAnim.dimension || 'W',
+            from: String(aeAnim.from || '0'),
+            to: String(aeAnim.to || '0'),
+            fromPercent: String(aeAnim.fromPercent || ''),
+            toPercent: String(aeAnim.toPercent || '')
+          }];
+          break;
+        case 'opacity':
+          result.properties = [{
+            type: 'opacity',
+            from: String(aeAnim.from || '0'),
+            to: String(aeAnim.to || '100')
+          }];
+          break;
+        case 'rotation':
+          result.properties = [{
+            type: 'rotation',
+            from: String(aeAnim.from || '0'),
+            to: String(aeAnim.to || '0')
+          }];
+          break;
+        case 'color':
+          result.properties = [{
+            type: 'color',
+            from: String(aeAnim.from || 'color.token'),
+            to: String(aeAnim.to || 'color.token')
+          }];
+          break;
+        case 'state':
+          result.properties = [{
+            type: 'state',
+            from: String(aeAnim.from || 'Initial state'),
+            to: String(aeAnim.to || 'Final state')
+          }];
+          break;
+        default:
+          result.properties = [{
+            type: prop,
+            from: String(aeAnim.from || '0'),
+            to: String(aeAnim.to || '0')
+          }];
+      }
+
+      return result;
+    }
+
+    /**
+     * Parseia JSON customizado do After Effects e popula o state do plugin.
+     * Retorna { success, layerCount, animCount, error }.
+     */
+    function parseAEJson(data) {
+      // Validação
+      if (!data.layers || !Array.isArray(data.layers) || data.layers.length === 0) {
+        return { success: false, layerCount: 0, animCount: 0, error: 'JSON inválido: campo "layers" ausente ou vazio.' };
+      }
+
+      // Reset state de tracks (NÃO reseta stepTitle, triggerType nem msPerTick — o usuário define manualmente)
+      state.tracks = [];
+      nextTrackId = 1;
+      nextAnimId = 1;
+      expandedComps = {};
+      expandedProps = {};
+      validationActive = false;
+
+      // Converter layers → tracks
+      var totalAnimCount = 0;
+      data.layers.forEach(function(layer, idx) {
+        var color = layer.color || TRACK_COLORS[idx % TRACK_COLORS.length];
+        var track = createTrack(layer.name || ('Layer ' + (idx + 1)), color);
+
+        if (layer.animations && Array.isArray(layer.animations)) {
+          layer.animations.forEach(function(aeAnim) {
+            var converted = convertAEAnimation(aeAnim);
+            var anim = createAnimation(track.id);
+            if (anim) {
+              anim.preset = converted.preset;
+              anim.properties = converted.properties;
+              anim.duration = converted.duration;
+              anim.delay = converted.delay;
+              // REGRA: opacidade SEMPRE usa curva linear (dupla segurança)
+              anim.easing = (anim.preset === 'opacity') ? 'motion.ease.linear' : converted.easing;
+              totalAnimCount++;
+            }
+          });
+        }
+      });
+
+      // Atualizar triggerAction baseado no estado atual (manual)
+      state.triggerAction = buildTriggerActionText();
+
+      saveState();
+      return {
+        success: true,
+        layerCount: data.layers.length,
+        animCount: totalAnimCount,
+        error: null
+      };
+    }
+
+    /**
+     * Handler principal de import do AE.
+     * Detecta se é formato AE custom ou formato interno do plugin.
+     */
+    function handleAEImport(file) {
+      var dropZone = document.getElementById('aeDropZone');
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        try {
+          var data = JSON.parse(e.target.result);
+
+          // Detectar formato: AE custom vs. formato interno do plugin
+          if (data.source === 'after-effects' || (data.layers && !data.tracks)) {
+            // Formato AE custom — importa só os tracks/animações
+            var result = parseAEJson(data);
+
+            if (result.success) {
+              showDropZoneSuccess(dropZone, file.name, result.layerCount, result.animCount);
+              addLog('AE JSON importado: ' + result.layerCount + ' layers, ' + result.animCount + ' animações.', 'success');
+
+              // Re-renderizar Step 3 com os novos tracks (já estamos no Step 3)
+              renderStep3();
+            } else {
+              showDropZoneError(dropZone, result.error);
+              addLog('Erro no import AE: ' + result.error, 'error');
+            }
+
+          } else if (data.tracks && data.version) {
+            // Formato interno do plugin — delegar para importJSON existente
+            importJSON(file);
+            showDropZoneSuccess(dropZone, file.name, data.tracks.length, data.tracks.reduce(function(sum, t) {
+              return sum + (t.animations ? t.animations.length : 0);
+            }, 0));
+            renderStep3();
+          } else {
+            showDropZoneError(dropZone, 'Formato JSON não reconhecido. Use o formato do After Effects ou o formato interno do plugin.');
+            addLog('Formato JSON não reconhecido.', 'error');
+          }
+
+        } catch (err) {
+          showDropZoneError(dropZone, 'Erro ao ler JSON: ' + err.message);
+          addLog('Erro ao ler JSON: ' + err.message, 'error');
+        }
+      };
+
+      reader.readAsText(file);
+    }
+
+    /**
+     * Atualiza a drop zone para exibir estado de sucesso.
+     */
+    function showDropZoneSuccess(dropZone, fileName, layerCount, animCount) {
+      dropZone.className = 'ae-drop-zone success';
+      dropZone.innerHTML = '<div class="drop-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 16l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
+        '<div class="ae-import-status">' +
+          '<span class="status-title">Importado com sucesso!</span>' +
+          '<span class="status-details">' + layerCount + ' layers · ' + animCount + ' animações</span>' +
+          '<span class="status-filename">' + escapeHtml(fileName) + '</span>' +
+        '</div>';
+    }
+
+    /**
+     * Atualiza a drop zone para exibir estado de erro.
+     */
+    function showDropZoneError(dropZone, errorMsg) {
+      dropZone.className = 'ae-drop-zone error';
+      dropZone.innerHTML = '<div class="drop-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 8l16 16M24 8L8 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>' +
+        '<div class="ae-import-error">' + escapeHtml(errorMsg) + '</div>' +
+        '<span class="drop-subtitle" style="margin-top:8px;"><a id="aeRetryPicker">Tentar novamente</a></span>';
+
+      // Re-bind click handler for retry
+      var retryBtn = document.getElementById('aeRetryPicker');
+      if (retryBtn) {
+        retryBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          resetDropZone();
+          document.getElementById('aeFileInput').click();
+        });
+      }
+    }
+
+    /**
+     * Reseta a drop zone para o estado inicial.
+     */
+    function resetDropZone() {
+      var dropZone = document.getElementById('aeDropZone');
+      dropZone.className = 'ae-drop-zone';
+      dropZone.innerHTML = '<div class="drop-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 4v16M10 14l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 22v4a2 2 0 002 2h20a2 2 0 002-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
+        '<span class="drop-title">Arraste o JSON aqui</span>' +
+        '<span class="drop-subtitle">ou <a id="aeFilePicker">selecione um arquivo</a></span>' +
+        '<span class="drop-subtitle" style="font-size:11px; color:var(--andes-text-disabled);">Aceita .json exportado do After Effects</span>';
+
+      // Re-bind file picker click
+      var picker = document.getElementById('aeFilePicker');
+      if (picker) {
+        picker.addEventListener('click', function(e) {
+          e.stopPropagation();
+          document.getElementById('aeFileInput').click();
+        });
+      }
+    }
+
+    // ================================================================
+    // TRACK & ANIMATION CRUD
+    // ================================================================
+
+    function createTrack(name, color) {
+      var track = {
+        id: 't' + (nextTrackId++),
+        name: name || 'Componente ' + state.tracks.length,
+        color: color || TRACK_COLORS[state.tracks.length % TRACK_COLORS.length],
+        animations: []
+      };
+      state.tracks.push(track);
+      expandedComps[track.id] = true;
+      saveState();
+      return track;
+    }
+
+    function removeTrack(trackId) {
+      state.tracks = state.tracks.filter(function(t) { return t.id !== trackId; });
+      delete expandedComps[trackId];
+      saveState();
+    }
+
+    function createAnimation(trackId) {
+      var track = state.tracks.find(function(t) { return t.id === trackId; });
+      if (!track) return null;
+      var anim = {
+        id: 'a' + (nextAnimId++),
+        preset: 'position',
+        properties: [{ type: 'position', axis: 'Y', from: '', to: '' }],
+        duration: 350,
+        delay: 0,
+        easing: 'motion.ease.onscreen'
+      };
+      track.animations.push(anim);
+      expandedProps[anim.id] = true;
+      saveState();
+      return anim;
+    }
+
+    function removeAnimation(trackId, animId) {
+      var track = state.tracks.find(function(t) { return t.id === trackId; });
+      if (!track) return;
+      track.animations = track.animations.filter(function(a) { return a.id !== animId; });
+      delete expandedProps[animId];
+      saveState();
+    }
+
+    function setAnimPropertyType(trackId, animId, propType) {
+      var track = state.tracks.find(function(t) { return t.id === trackId; });
+      if (!track) return;
+      var anim = track.animations.find(function(a) { return a.id === animId; });
+      if (!anim) return;
+
+      anim.preset = propType;
+      // REGRA: opacidade SEMPRE usa curva linear
+      if (propType === 'opacity') {
+        anim.easing = 'motion.ease.linear';
+      }
+      switch (propType) {
+        case 'position':
+          anim.properties = [{ type: 'position', axis: 'Y', from: '', to: '' }];
+          break;
+        case 'opacity':
+          anim.properties = [{ type: 'opacity', from: '', to: '' }];
+          break;
+        case 'scale':
+          anim.properties = [{ type: 'scale', dimension: 'W', from: '', to: '', fromPercent: '', toPercent: '' }];
+          break;
+        case 'rotation':
+          anim.properties = [{ type: 'rotation', from: '', to: '' }];
+          break;
+        case 'color':
+          anim.properties = [{ type: 'color', from: '', to: '' }];
+          break;
+        case 'state':
+          anim.properties = [{ type: 'state', from: '', to: '' }];
+          break;
+        default:
+          anim.properties = [{ type: propType, from: '', to: '' }];
+      }
+      saveState();
+    }
+
+    // ================================================================
+    // NAVIGATION
+    // ================================================================
+
+    function goToStep(stepNum) {
+      state.currentStep = stepNum;
+      saveState();
+
+      document.getElementById('step1').classList.toggle('hidden', stepNum !== 1);
+      document.getElementById('step2').classList.toggle('hidden', stepNum !== 2);
+      document.getElementById('step3').classList.toggle('hidden', stepNum !== 3);
+
+      // Back button
+      document.getElementById('btnBack').classList.toggle('hidden', stepNum === 1);
+
+      // Step indicator
+      document.getElementById('stepIndicator').textContent = stepNum + '/3';
+
+      // Header actions (export/import) only visible on step 3
+      // headerActions oculto (sem botões export/import)
+
+      // Render content of the new step
+      if (stepNum === 1) renderStep1();
+      if (stepNum === 2) renderStep2();
+      if (stepNum === 3) renderStep3();
+    }
+
+    // ================================================================
+    // RENDER STEP 1
+    // ================================================================
+
+    function renderStep1() {
+      var card = document.getElementById('targetCard');
+      var placeholder = document.getElementById('targetPlaceholder');
+      var info = document.getElementById('targetInfo');
+      var nameEl = document.getElementById('targetName');
+      var metaEl = document.getElementById('targetMeta');
+      var btnNext = document.getElementById('btnNext1');
+
+      if (state.targetNodeId) {
+        placeholder.style.display = 'none';
+        info.style.display = 'block';
+        nameEl.textContent = state.targetNodeName || state.targetNodeId;
+        metaEl.textContent = state.targetNodeMeta || ('ID: ' + state.targetNodeId);
+        card.classList.remove('empty');
+        btnNext.disabled = false;
+      } else {
+        placeholder.style.display = 'block';
+        info.style.display = 'none';
+        card.classList.add('empty');
+        btnNext.disabled = true;
+      }
+    }
+
+    // ================================================================
+    // RENDER STEP 2
+    // ================================================================
+
+    /** Constrói o texto final do trigger a partir do tipo selecionado + nome do componente */
+    function buildTriggerActionText() {
+      var triggerType = state.triggerType || 'tap';
+      var compName = (state.triggerComponentName || '').trim();
+
+      var base = '';
+      switch (triggerType) {
+        case 'tap':       base = 'On TAP in'; break;
+        case 'automatic': return 'AUTOMATIC';
+        case 'swipe':     base = 'On SWIPE in'; break;
+        case 'scroll':    base = 'On SCROLL in'; break;
+        default:          return '';
+      }
+      return compName ? (base + '\n' + compName) : base.replace(' in', '');
+    }
+
+    /** Atualiza o preview do trigger no Step 2 */
+    function updateTriggerPreview() {
+      var preview = document.getElementById('triggerPreview');
+      if (!preview) return;
+      var text = buildTriggerActionText().replace(/\n/g, ' ');
+      preview.textContent = 'Preview: ' + text;
+    }
+
+    function renderStep2() {
+      document.getElementById('stepTitle').value = state.stepTitle || '';
+      document.getElementById('msPerTick').value = String(state.msPerTick || 50);
+      document.getElementById('triggerType').value = state.triggerType || 'tap';
+      document.getElementById('triggerComponentName').value = state.triggerComponentName || '';
+      updateTriggerComponentFieldVisibility();
+      updateTriggerPreview();
+      updateStep2Button();
+    }
+
+    /** Mostra/esconde o campo de nome do componente trigger (oculto para Automatic) */
+    function updateTriggerComponentFieldVisibility() {
+      var field = document.getElementById('triggerComponentField');
+      if (!field) return;
+      var isAutomatic = (state.triggerType === 'automatic');
+      field.style.display = isAutomatic ? 'none' : '';
+      // Limpar o nome se for automatic
+      if (isAutomatic && state.triggerComponentName) {
+        state.triggerComponentName = '';
+        var input = document.getElementById('triggerComponentName');
+        if (input) input.value = '';
+      }
+      // Limpar erros visuais ao mudar de tipo
+      clearStep2Errors();
+      updateStep2Button();
+    }
+
+    /** Atualiza o estado disabled/enabled do botão do Step 2 */
+    function updateStep2Button() {
+      var btn = document.getElementById('btnNext2');
+      if (!btn) return;
+      var isAutomatic = (state.triggerType === 'automatic');
+      var needsName = !isAutomatic;
+      var hasName = !!(state.triggerComponentName && state.triggerComponentName.trim());
+      btn.disabled = needsName && !hasName;
+    }
+
+    /** Limpa erros visuais do Step 2 */
+    function clearStep2Errors() {
+      var input = document.getElementById('triggerComponentName');
+      var errorEl = document.getElementById('triggerComponentError');
+      var step2Msg = document.getElementById('step2ErrorMsg');
+      if (input) input.classList.remove('field-error');
+      if (errorEl) errorEl.classList.remove('visible');
+      if (step2Msg) { step2Msg.textContent = ''; step2Msg.classList.remove('visible'); }
+    }
+
+    /** Mostra erros de validação do Step 2 */
+    function showStep2Errors() {
+      var input = document.getElementById('triggerComponentName');
+      var errorEl = document.getElementById('triggerComponentError');
+      var step2Msg = document.getElementById('step2ErrorMsg');
+      if (input) { input.classList.add('field-error'); input.focus(); }
+      if (errorEl) errorEl.classList.add('visible');
+      if (step2Msg) { step2Msg.textContent = 'Preencha o nome do componente trigger para continuar.'; step2Msg.classList.add('visible'); }
+    }
+
+    // ================================================================
+    // RENDER STEP 3 (Tracks / Components)
+    // ================================================================
+
+    function renderStep3() {
+      var container = document.getElementById('trackList');
+      container.innerHTML = '';
+
+      // Mostrar/esconder drop zone e divider dependendo se tem tracks
+      var aeDropZone = document.getElementById('aeDropZone');
+      var aeDivider = aeDropZone ? aeDropZone.previousElementSibling : null;
+
+      if (state.tracks.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:40px 20px; color:var(--andes-text-disabled); font-size:14px;">Nenhum componente adicionado.<br>Use "<strong>+ Adicionar Componente</strong>" acima<br>ou importe um JSON do After Effects abaixo.</div>';
+        // Garantir que drop zone está visível quando não tem tracks
+        if (aeDropZone) aeDropZone.style.display = '';
+        if (aeDivider) aeDivider.style.display = '';
+        updateGenerateButton();
+        return;
+      }
+
+      state.tracks.forEach(function(track, idx) {
+        var compEl = renderComponentCard(track, idx);
+        container.appendChild(compEl);
+      });
+
+      // Esconder drop zone quando já tem tracks importados/adicionados
+      if (aeDropZone) aeDropZone.style.display = 'none';
+      if (aeDivider) aeDivider.style.display = 'none';
+
+      updateGenerateButton();
+    }
+
+    function renderComponentCard(track, trackIndex) {
+      var isOpen = expandedComps[track.id] !== false;
+      var card = document.createElement('div');
+      card.className = 'component-card';
+      card.setAttribute('data-track-id', track.id);
+
+      var inner = document.createElement('div');
+      inner.className = 'component-card-inner';
+
+      // ── Header row ──
+      var headerRow = document.createElement('div');
+      headerRow.className = 'comp-header-row';
+
+      var dot = document.createElement('div');
+      dot.className = 'comp-color-dot';
+      dot.style.background = track.color;
+
+      var nameText = document.createElement('span');
+      nameText.className = 'comp-name-text';
+      nameText.textContent = track.name;
+
+      var chevron = document.createElement('button');
+      chevron.className = 'chevron-btn' + (isOpen ? ' open' : '');
+      chevron.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+      // Action buttons (visible on hover)
+      var actions = document.createElement('div');
+      actions.className = 'comp-header-actions';
+
+      // Move up button
+      var moveUpBtn = document.createElement('button');
+      moveUpBtn.className = 'btn-icon-mini';
+      moveUpBtn.title = 'Mover para cima';
+      moveUpBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      if (trackIndex === 0) moveUpBtn.disabled = true;
+      moveUpBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (trackIndex > 0) {
+          var temp = state.tracks[trackIndex];
+          state.tracks[trackIndex] = state.tracks[trackIndex - 1];
+          state.tracks[trackIndex - 1] = temp;
+          saveState();
+          renderStep3();
+          addLog('Componente movido para cima.');
+        }
+      });
+
+      // Move down button
+      var moveDownBtn = document.createElement('button');
+      moveDownBtn.className = 'btn-icon-mini';
+      moveDownBtn.title = 'Mover para baixo';
+      moveDownBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      if (trackIndex === state.tracks.length - 1) moveDownBtn.disabled = true;
+      moveDownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (trackIndex < state.tracks.length - 1) {
+          var temp = state.tracks[trackIndex];
+          state.tracks[trackIndex] = state.tracks[trackIndex + 1];
+          state.tracks[trackIndex + 1] = temp;
+          saveState();
+          renderStep3();
+          addLog('Componente movido para baixo.');
+        }
+      });
+
+      // Delete button
+      var deleteCompBtn = document.createElement('button');
+      deleteCompBtn.className = 'btn-icon-mini danger';
+      deleteCompBtn.title = 'Remover componente';
+      deleteCompBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1m2 0v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h10z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      deleteCompBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var name = track.name;
+        removeTrack(track.id);
+        renderStep3();
+        updateGenerateButton();
+        addLog('Componente "' + name + '" removido.');
+      });
+
+      actions.appendChild(deleteCompBtn);
+
+      headerRow.appendChild(dot);
+      headerRow.appendChild(nameText);
+      headerRow.appendChild(actions);
+      headerRow.appendChild(chevron);
+
+      headerRow.addEventListener('click', function(e) {
+        // Don't toggle if clicking action buttons
+        if (e.target.closest('.comp-header-actions')) return;
+        expandedComps[track.id] = !isOpen;
+        renderStep3();
+      });
+
+      inner.appendChild(headerRow);
+
+      // ── Body (collapsible) ──
+      if (isOpen) {
+        var body = document.createElement('div');
+        body.className = 'comp-body';
+
+        // Name + Color row
+        var nameColorRow = document.createElement('div');
+        nameColorRow.className = 'comp-name-color-row';
+
+        // Name field
+        var nameField = document.createElement('div');
+        nameField.className = 'andes-field';
+        nameField.innerHTML = '<label>Nome do componente</label>';
+        var nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.value = track.name;
+        nameInput.placeholder = 'Ex: Button Back';
+        nameInput.addEventListener('input', function() {
+          track.name = this.value;
+          nameText.textContent = this.value;
+          saveState();
+        });
+        nameField.appendChild(nameInput);
+
+        // Color field
+        var colorField = document.createElement('div');
+        colorField.className = 'color-field';
+        colorField.innerHTML = '<label>Cor</label>';
+        var colorWrap = document.createElement('div');
+        colorWrap.className = 'color-input-wrap';
+        var colorSwatch = document.createElement('div');
+        colorSwatch.className = 'color-swatch';
+        colorSwatch.style.background = track.color;
+        var colorInput = document.createElement('input');
+        colorInput.type = 'color';
+        colorInput.value = track.color;
+        colorInput.addEventListener('input', function() {
+          track.color = this.value;
+          colorSwatch.style.background = this.value;
+          dot.style.background = this.value;
+          // Limpar active dos presets quando usar o espectro
+          var presetSwatches = body.querySelectorAll('.color-preset-swatch');
+          presetSwatches.forEach(function(s) { s.classList.remove('active'); });
+          // Re-marcar se a cor selecionada coincide com um preset
+          var val = this.value.toUpperCase();
+          presetSwatches.forEach(function(s) {
+            if (s.title.toUpperCase() === val) s.classList.add('active');
+          });
+          saveState();
+        });
+        colorWrap.appendChild(colorSwatch);
+        colorWrap.appendChild(colorInput);
+        colorWrap.addEventListener('click', function() { colorInput.click(); });
+        colorField.appendChild(colorWrap);
+
+        nameColorRow.appendChild(nameField);
+        nameColorRow.appendChild(colorField);
+        body.appendChild(nameColorRow);
+
+        // Color presets (quick pick)
+        var presetsContainer = document.createElement('div');
+        presetsContainer.className = 'color-presets';
+        var presetsLabel = document.createElement('label');
+        presetsLabel.textContent = 'Cores rápidas';
+        presetsContainer.appendChild(presetsLabel);
+        COLOR_PRESETS.forEach(function(preset) {
+          var swatch = document.createElement('div');
+          swatch.className = 'color-preset-swatch';
+          swatch.style.background = preset;
+          if (track.color.toUpperCase() === preset.toUpperCase()) {
+            swatch.classList.add('active');
+          }
+          swatch.title = preset;
+          swatch.addEventListener('click', function() {
+            track.color = preset;
+            colorSwatch.style.background = preset;
+            colorInput.value = preset;
+            dot.style.background = preset;
+            // Atualizar active state
+            presetsContainer.querySelectorAll('.color-preset-swatch').forEach(function(s) {
+              s.classList.remove('active');
+            });
+            swatch.classList.add('active');
+            saveState();
+          });
+          presetsContainer.appendChild(swatch);
+        });
+        body.appendChild(presetsContainer);
+
+        // Divider
+        var divider = document.createElement('div');
+        divider.className = 'comp-divider';
+        body.appendChild(divider);
+
+        // Properties section header
+        var propsHeader = document.createElement('div');
+        propsHeader.className = 'props-section-header';
+        var propsTitle = document.createElement('span');
+        propsTitle.className = 'props-section-title';
+        propsTitle.textContent = 'Propriedades';
+
+        var addPropBtn = document.createElement('button');
+        addPropBtn.className = 'add-link';
+        addPropBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Adicionar propriedade';
+        addPropBtn.addEventListener('click', function() {
+          // Fechar todas as propriedades abertas deste componente → foco na nova
+          track.animations.forEach(function(a) { expandedProps[a.id] = false; });
+
+          var newAnim = createAnimation(track.id);
+          renderStep3();
+          updateGenerateButton();
+          addLog('Propriedade adicionada em "' + track.name + '"', 'success');
+
+          // Scroll suave até a nova propriedade
+          setTimeout(function() {
+            var trackCard = document.querySelector('[data-track-id="' + track.id + '"]');
+            if (trackCard) {
+              var propCards = trackCard.querySelectorAll('.property-card');
+              if (propCards.length > 0) {
+                propCards[propCards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }
+            }
+          }, 50);
+        });
+
+        propsHeader.appendChild(propsTitle);
+        propsHeader.appendChild(addPropBtn);
+        body.appendChild(propsHeader);
+
+        // Property cards
+        track.animations.forEach(function(anim, animIdx) {
+          var propCard = renderPropertyCard(track, anim, animIdx);
+          body.appendChild(propCard);
+        });
+
+        // Botão "Adicionar propriedade" no final — só visível quando o de cima sai da tela
+        if (track.animations.length > 0) {
+          var addPropBtnBottom = document.createElement('button');
+          addPropBtnBottom.className = 'add-link add-link-bottom';
+          addPropBtnBottom.style.display = 'none'; // começa escondido
+          addPropBtnBottom.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Adicionar propriedade';
+          addPropBtnBottom.addEventListener('click', function() {
+            // Fechar todas as propriedades abertas deste componente → foco na nova
+            track.animations.forEach(function(a) { expandedProps[a.id] = false; });
+
+            var newAnim = createAnimation(track.id);
+            renderStep3();
+            updateGenerateButton();
+            addLog('Propriedade adicionada em "' + track.name + '"', 'success');
+
+            // Scroll suave até a nova propriedade
+            setTimeout(function() {
+              var trackCard = document.querySelector('[data-track-id="' + track.id + '"]');
+              if (trackCard) {
+                var propCards = trackCard.querySelectorAll('.property-card');
+                if (propCards.length > 0) {
+                  propCards[propCards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+              }
+            }, 50);
+          });
+          body.appendChild(addPropBtnBottom);
+
+          // Observer: mostra o botão de baixo somente quando o de cima não está visível
+          (function(topBtn, bottomBtn) {
+            var observer = new IntersectionObserver(function(entries) {
+              entries.forEach(function(entry) {
+                bottomBtn.style.display = entry.isIntersecting ? 'none' : 'inline-flex';
+              });
+            }, { threshold: 0.1 });
+            observer.observe(topBtn);
+          })(addPropBtn, addPropBtnBottom);
+        }
+
+        inner.appendChild(body);
+      }
+
+      card.appendChild(inner);
+      return card;
+    }
+
+    function renderPropertyCard(track, anim, animIndex) {
+      var isOpen = expandedProps[anim.id] !== false;
+      var propType = anim.preset || 'position';
+      var propLabel = PROPERTY_TYPES.find(function(p) { return p.value === propType; });
+      var propLabelText = propLabel ? propLabel.label : capitalize(propType);
+      var letter = String.fromCharCode(65 + animIndex); // A, B, C...
+
+      var card = document.createElement('div');
+      card.className = 'property-card';
+
+      // ── Property header ──
+      var headerRow = document.createElement('div');
+      headerRow.className = 'prop-header-row';
+
+      var title = document.createElement('span');
+      title.className = 'prop-header-title';
+      title.textContent = 'Propriedade ' + letter + ': (' + propLabelText + ')';
+
+      var chevron = document.createElement('button');
+      chevron.className = 'chevron-btn' + (isOpen ? ' open' : '');
+      chevron.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+      headerRow.appendChild(title);
+      headerRow.appendChild(chevron);
+
+      headerRow.addEventListener('click', function() {
+        expandedProps[anim.id] = !isOpen;
+        renderStep3();
+      });
+
+      card.appendChild(headerRow);
+
+      // ── Property body (collapsible) ──
+      if (isOpen) {
+        var body = document.createElement('div');
+        body.className = 'prop-body';
+
+        // 1. Property type selector
+        var typeField = createField('Selecione a propriedade');
+        var typeSelect = document.createElement('select');
+        PROPERTY_TYPES.forEach(function(pt) {
+          var opt = document.createElement('option');
+          opt.value = pt.value;
+          opt.textContent = pt.label;
+          if (pt.value === propType) opt.selected = true;
+          typeSelect.appendChild(opt);
+        });
+        typeSelect.addEventListener('change', function() {
+          setAnimPropertyType(track.id, anim.id, this.value);
+          renderStep3();
+        });
+        typeField.appendChild(typeSelect);
+        body.appendChild(typeField);
+
+        // 2. Property-specific fields
+        var prop = anim.properties[0] || {};
+
+        if (propType === 'position') {
+          // Axis radio buttons
+          var axisSection = document.createElement('div');
+          axisSection.className = 'radio-group-section';
+
+          var axisLabel = document.createElement('p');
+          axisLabel.className = 'radio-group-label';
+          axisLabel.textContent = 'Selecione o eixo';
+          axisSection.appendChild(axisLabel);
+
+          var radioGroup = document.createElement('div');
+          radioGroup.className = 'radio-group';
+          var currentAxis = prop.axis || 'Y';
+          var radioName = 'axis_' + track.id + '_' + anim.id;
+
+          ['Y', 'X'].forEach(function(axis) {
+            var radioLabel = document.createElement('label');
+            radioLabel.className = 'radio-option';
+            var radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = radioName;
+            radioInput.value = axis;
+            if (currentAxis === axis) radioInput.checked = true;
+            radioInput.addEventListener('change', function() {
+              prop.axis = this.value;
+              saveState();
+            });
+            radioLabel.appendChild(radioInput);
+            radioLabel.appendChild(document.createTextNode(' Eixo ' + axis));
+            radioGroup.appendChild(radioLabel);
+          });
+
+          axisSection.appendChild(radioGroup);
+          body.appendChild(axisSection);
+
+          // From / To fields
+          var fromToRow = document.createElement('div');
+          fromToRow.className = 'field-row';
+          var fromField = createField('From');
+          var fromPlaceholder = currentAxis === 'Y' ? 'Ex: 1600' : 'Ex: -720';
+          var toPlaceholder = currentAxis === 'Y' ? 'Ex: 0' : 'Ex: 0';
+          var fromInput = createTextInput('', fromPlaceholder);
+          if (prop.from) fromInput.value = prop.from;
+          fromInput.addEventListener('input', function() { prop.from = this.value; saveState(); updateGenerateButton(); });
+          fromField.appendChild(fromInput);
+          addFieldValidation(fromField, fromInput);
+          var toField = createField('To');
+          var toInput = createTextInput('', toPlaceholder);
+          if (prop.to) toInput.value = prop.to;
+          toInput.addEventListener('input', function() { prop.to = this.value; saveState(); updateGenerateButton(); });
+          toField.appendChild(toInput);
+          addFieldValidation(toField, toInput);
+          fromToRow.appendChild(fromField);
+          fromToRow.appendChild(toField);
+          body.appendChild(fromToRow);
+
+          // Hint
+          var hintPos = document.createElement('p');
+          hintPos.className = 'field-hint';
+          hintPos.textContent = 'O "px" será adicionado automaticamente na timeline.';
+          body.appendChild(hintPos);
+
+        } else if (propType === 'scale') {
+          // Dimension selector (W or H)
+          var dimSection = document.createElement('div');
+          dimSection.className = 'radio-group-section';
+          var dimLabel = document.createElement('p');
+          dimLabel.className = 'radio-group-label';
+          dimLabel.textContent = 'Dimensão';
+          dimSection.appendChild(dimLabel);
+          var dimRadioGroup = document.createElement('div');
+          dimRadioGroup.className = 'radio-group';
+          var currentDim = prop.dimension || 'W';
+          var dimRadioName = 'dim_' + track.id + '_' + anim.id;
+          ['W', 'H'].forEach(function(dim) {
+            var dRadioLabel = document.createElement('label');
+            dRadioLabel.className = 'radio-option';
+            var dRadioInput = document.createElement('input');
+            dRadioInput.type = 'radio';
+            dRadioInput.name = dimRadioName;
+            dRadioInput.value = dim;
+            if (currentDim === dim) dRadioInput.checked = true;
+            dRadioInput.addEventListener('change', function() {
+              prop.dimension = this.value;
+              saveState();
+            });
+            dRadioLabel.appendChild(dRadioInput);
+            dRadioLabel.appendChild(document.createTextNode(dim === 'W' ? ' Width (W)' : ' Height (H)'));
+            dimRadioGroup.appendChild(dRadioLabel);
+          });
+          dimSection.appendChild(dimRadioGroup);
+          body.appendChild(dimSection);
+
+          // Value row: From (valor) | To (valor) — lado a lado
+          var valueRow = document.createElement('div');
+          valueRow.className = 'field-row';
+          var fromField2 = createField('From (valor)');
+          var fromInput2 = createTextInput('', 'Ex: 360');
+          if (prop.from) fromInput2.value = prop.from;
+          fromInput2.addEventListener('input', function() { prop.from = this.value; saveState(); updateGenerateButton(); });
+          fromField2.appendChild(fromInput2);
+          addFieldValidation(fromField2, fromInput2);
+          var toField2 = createField('To (valor)');
+          var toInput2 = createTextInput('', 'Ex: 750');
+          if (prop.to) toInput2.value = prop.to;
+          toInput2.addEventListener('input', function() { prop.to = this.value; saveState(); updateGenerateButton(); });
+          toField2.appendChild(toInput2);
+          addFieldValidation(toField2, toInput2);
+          valueRow.appendChild(fromField2);
+          valueRow.appendChild(toField2);
+          body.appendChild(valueRow);
+
+          // Percent row: From (%) | To (%) — lado a lado
+          var pctRow = document.createElement('div');
+          pctRow.className = 'field-row';
+          var fromPctField = createField('From (%)');
+          var fromPctInput = createTextInput('', 'Ex: 0');
+          if (prop.fromPercent) fromPctInput.value = prop.fromPercent;
+          fromPctInput.addEventListener('input', function() { prop.fromPercent = this.value; saveState(); updateGenerateButton(); });
+          fromPctField.appendChild(fromPctInput);
+          addFieldValidation(fromPctField, fromPctInput);
+          var toPctField = createField('To (%)');
+          var toPctInput = createTextInput('', 'Ex: 100');
+          if (prop.toPercent) toPctInput.value = prop.toPercent;
+          toPctInput.addEventListener('input', function() { prop.toPercent = this.value; saveState(); updateGenerateButton(); });
+          toPctField.appendChild(toPctInput);
+          addFieldValidation(toPctField, toPctInput);
+          pctRow.appendChild(fromPctField);
+          pctRow.appendChild(toPctField);
+          body.appendChild(pctRow);
+
+          // Hint
+          var hintScale = document.createElement('p');
+          hintScale.className = 'field-hint';
+          hintScale.textContent = 'O "%" será adicionado automaticamente na timeline. Digite apenas os números.';
+          body.appendChild(hintScale);
+
+        } else if (propType === 'color') {
+          // Color token fields
+          var colorRow = document.createElement('div');
+          colorRow.className = 'field-row';
+          var fromColorField = createField('From');
+          var fromColorInput = createTextInput('', 'Ex: andes.color.red.500');
+          if (prop.from) fromColorInput.value = prop.from;
+          fromColorInput.addEventListener('input', function() { prop.from = this.value; saveState(); updateGenerateButton(); });
+          fromColorField.appendChild(fromColorInput);
+          addFieldValidation(fromColorField, fromColorInput);
+          var toColorField = createField('To');
+          var toColorInput = createTextInput('', 'Ex: andes.color.blue.600');
+          if (prop.to) toColorInput.value = prop.to;
+          toColorInput.addEventListener('input', function() { prop.to = this.value; saveState(); updateGenerateButton(); });
+          toColorField.appendChild(toColorInput);
+          addFieldValidation(toColorField, toColorInput);
+          colorRow.appendChild(fromColorField);
+          colorRow.appendChild(toColorField);
+          body.appendChild(colorRow);
+
+          // Hint
+          var hintColor = document.createElement('p');
+          hintColor.className = 'field-hint';
+          hintColor.textContent = 'Digite o nome completo do token de cor.';
+          body.appendChild(hintColor);
+
+        } else if (propType === 'state') {
+          // State description fields
+          var stateRow = document.createElement('div');
+          stateRow.className = 'field-row';
+          var fromStateField = createField('From');
+          var fromStateInput = createTextInput('', 'Ex: Default state');
+          if (prop.from) fromStateInput.value = prop.from;
+          fromStateInput.addEventListener('input', function() { prop.from = this.value; saveState(); updateGenerateButton(); });
+          fromStateField.appendChild(fromStateInput);
+          addFieldValidation(fromStateField, fromStateInput);
+          var toStateField = createField('To');
+          var toStateInput = createTextInput('', 'Ex: Active state');
+          if (prop.to) toStateInput.value = prop.to;
+          toStateInput.addEventListener('input', function() { prop.to = this.value; saveState(); updateGenerateButton(); });
+          toStateField.appendChild(toStateInput);
+          addFieldValidation(toStateField, toStateInput);
+          stateRow.appendChild(fromStateField);
+          stateRow.appendChild(toStateField);
+          body.appendChild(stateRow);
+
+          // Hint
+          var hintState = document.createElement('p');
+          hintState.className = 'field-hint';
+          hintState.textContent = 'Descreva o nome dos estados do componente.';
+          body.appendChild(hintState);
+
+        } else if (propType === 'opacity') {
+          // Opacity — From / To (percentage)
+          var fromToRowOp = document.createElement('div');
+          fromToRowOp.className = 'field-row';
+          var fromFieldOp = createField('From');
+          var fromInputOp = createTextInput('', 'Ex: 100');
+          if (prop.from) fromInputOp.value = prop.from;
+          fromInputOp.addEventListener('input', function() { prop.from = this.value; saveState(); updateGenerateButton(); });
+          fromFieldOp.appendChild(fromInputOp);
+          addFieldValidation(fromFieldOp, fromInputOp);
+          var toFieldOp = createField('To');
+          var toInputOp = createTextInput('', 'Ex: 0');
+          if (prop.to) toInputOp.value = prop.to;
+          toInputOp.addEventListener('input', function() { prop.to = this.value; saveState(); updateGenerateButton(); });
+          toFieldOp.appendChild(toInputOp);
+          addFieldValidation(toFieldOp, toInputOp);
+          fromToRowOp.appendChild(fromFieldOp);
+          fromToRowOp.appendChild(toFieldOp);
+          body.appendChild(fromToRowOp);
+
+          // Hint
+          var hintOp = document.createElement('p');
+          hintOp.className = 'field-hint';
+          hintOp.textContent = 'O "%" será adicionado automaticamente. Digite apenas o número (ex: 100 para 100%).';
+          body.appendChild(hintOp);
+
+        } else if (propType === 'rotation') {
+          // Rotation — From / To (degrees)
+          var fromToRowRot = document.createElement('div');
+          fromToRowRot.className = 'field-row';
+          var fromFieldRot = createField('From');
+          var fromInputRot = createTextInput('', 'Ex: 0');
+          if (prop.from) fromInputRot.value = prop.from;
+          fromInputRot.addEventListener('input', function() { prop.from = this.value; saveState(); updateGenerateButton(); });
+          fromFieldRot.appendChild(fromInputRot);
+          addFieldValidation(fromFieldRot, fromInputRot);
+          var toFieldRot = createField('To');
+          var toInputRot = createTextInput('', 'Ex: 360');
+          if (prop.to) toInputRot.value = prop.to;
+          toInputRot.addEventListener('input', function() { prop.to = this.value; saveState(); updateGenerateButton(); });
+          toFieldRot.appendChild(toInputRot);
+          addFieldValidation(toFieldRot, toInputRot);
+          fromToRowRot.appendChild(fromFieldRot);
+          fromToRowRot.appendChild(toFieldRot);
+          body.appendChild(fromToRowRot);
+
+          // Hint
+          var hintRot = document.createElement('p');
+          hintRot.className = 'field-hint';
+          hintRot.textContent = 'O "°" será adicionado automaticamente. Digite apenas o número de graus.';
+          body.appendChild(hintRot);
+
+        } else {
+          // Fallback genérico
+          var fromToRow3 = document.createElement('div');
+          fromToRow3.className = 'field-row';
+          var fromField3 = createField('From');
+          var fromInput3 = createTextInput('', 'Ex: 0');
+          if (prop.from) fromInput3.value = prop.from;
+          fromInput3.addEventListener('input', function() { prop.from = this.value; saveState(); updateGenerateButton(); });
+          fromField3.appendChild(fromInput3);
+          addFieldValidation(fromField3, fromInput3);
+          var toField3 = createField('To');
+          var toInput3 = createTextInput('', 'Ex: 100');
+          if (prop.to) toInput3.value = prop.to;
+          toInput3.addEventListener('input', function() { prop.to = this.value; saveState(); updateGenerateButton(); });
+          toField3.appendChild(toInput3);
+          addFieldValidation(toField3, toInput3);
+          fromToRow3.appendChild(fromField3);
+          fromToRow3.appendChild(toField3);
+          body.appendChild(fromToRow3);
+        }
+
+        // 3. Timing fields (Duration, Delay, Easing)
+        var timingSection = document.createElement('div');
+        timingSection.className = 'timing-fields';
+
+        // Duration dropdown
+        var durField = createField('Duracao (ms)');
+        var durSelect = createDurationSelect(anim.duration);
+        durSelect.addEventListener('change', function() {
+          anim.duration = parseInt(this.value) || 350;
+          saveState();
+        });
+        durField.appendChild(durSelect);
+        timingSection.appendChild(durField);
+
+        // Delay dropdown + text field side by side
+        var delRow = document.createElement('div');
+        delRow.className = 'field-row';
+
+        var delField = createField('Delay (ms)');
+        var delSelect = createDelaySelect(anim.delay);
+        delSelect.addEventListener('change', function() {
+          var val = parseInt(this.value) || 0;
+          anim.delay = val;
+          delInput.value = '';
+          delInput.classList.remove('field-error');
+          delValMsg.classList.remove('visible');
+          saveState();
+        });
+        delField.appendChild(delSelect);
+        delRow.appendChild(delField);
+
+        var delCustomField = createField('Ou digite');
+        var delInput = document.createElement('input');
+        delInput.type = 'text';
+        delInput.placeholder = 'Ex: 550, 600...';
+        delInput.inputMode = 'numeric';
+        // Se o valor atual não está no dropdown, mostrar no text field
+        var delayInDropdown = DELAY_OPTIONS.indexOf(anim.delay) !== -1;
+        if (!delayInDropdown && anim.delay > 0) {
+          delInput.value = anim.delay;
+        }
+        var delValMsg = document.createElement('div');
+        delValMsg.className = 'field-validation-msg';
+        delValMsg.textContent = 'Deve ser múltiplo de 50 (ex: 50, 100, 150...)';
+
+        delInput.addEventListener('input', function() {
+          var raw = this.value.replace(/[^0-9]/g, '');
+          this.value = raw;
+          if (raw === '') {
+            this.classList.remove('field-error');
+            delValMsg.classList.remove('visible');
+            return;
+          }
+          var num = parseInt(raw) || 0;
+          if (num % 50 !== 0) {
+            this.classList.add('field-error');
+            delValMsg.classList.add('visible');
+          } else {
+            this.classList.remove('field-error');
+            delValMsg.classList.remove('visible');
+            anim.delay = num;
+            // Atualizar dropdown se valor existe lá
+            var matchInDropdown = DELAY_OPTIONS.indexOf(num) !== -1;
+            delSelect.value = matchInDropdown ? String(num) : '0';
+            saveState();
+          }
+        });
+
+        delInput.addEventListener('blur', function() {
+          var raw = this.value.trim();
+          if (raw === '') return;
+          var num = parseInt(raw) || 0;
+          if (num % 50 !== 0) {
+            this.classList.add('field-error');
+            delValMsg.classList.add('visible');
+          }
+        });
+
+        delCustomField.appendChild(delInput);
+        delCustomField.appendChild(delValMsg);
+        delRow.appendChild(delCustomField);
+
+        timingSection.appendChild(delRow);
+
+        // Easing dropdown
+        var easField = createField('Dynamic Easing');
+        var easSelect = document.createElement('select');
+        var isOpacity = (anim.preset === 'opacity');
+        EASING_PRESETS.forEach(function(ep) {
+          var opt = document.createElement('option');
+          opt.value = ep.value;
+          opt.textContent = ep.label;
+          if (anim.easing === ep.value) opt.selected = true;
+          easSelect.appendChild(opt);
+        });
+        // REGRA: opacidade SEMPRE usa curva linear — dropdown travado
+        if (isOpacity) {
+          easSelect.value = 'motion.ease.linear';
+          anim.easing = 'motion.ease.linear';
+          easSelect.disabled = true;
+          easSelect.title = 'Opacidade sempre usa curva Linear';
+          easSelect.style.opacity = '0.6';
+        }
+        easSelect.addEventListener('change', function() {
+          anim.easing = this.value;
+          saveState();
+        });
+        easField.appendChild(easSelect);
+        timingSection.appendChild(easField);
+
+        body.appendChild(timingSection);
+
+        // 4. Delete property link
+        var delContainer = document.createElement('div');
+        delContainer.className = 'delete-container';
+        var delBtn = document.createElement('button');
+        delBtn.className = 'delete-link';
+        delBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1m2 0v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h10z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg> Apagar propriedade';
+        delBtn.addEventListener('click', function() {
+          removeAnimation(track.id, anim.id);
+          renderStep3();
+          updateGenerateButton();
+          addLog('Propriedade removida de "' + track.name + '"');
+        });
+        delContainer.appendChild(delBtn);
+        body.appendChild(delContainer);
+
+        card.appendChild(body);
+      }
+
+      return card;
+    }
+
+    // ================================================================
+    // FIELD HELPERS
+    // ================================================================
+
+    function createField(labelText) {
+      var field = document.createElement('div');
+      field.className = 'andes-field';
+      var label = document.createElement('label');
+      label.textContent = labelText;
+      field.appendChild(label);
+      return field;
+    }
+
+    function createTextInput(value, placeholder) {
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.value = value;
+      input.placeholder = placeholder || '';
+      return input;
+    }
+
+    function createDurationSelect(currentValue) {
+      var select = document.createElement('select');
+      var hasCurrentValue = false;
+      DURATION_OPTIONS.forEach(function(ms) {
+        var opt = document.createElement('option');
+        opt.value = ms;
+        opt.textContent = ms + 'ms';
+        if (ms === currentValue) { opt.selected = true; hasCurrentValue = true; }
+        select.appendChild(opt);
+      });
+      if (!hasCurrentValue && currentValue) {
+        var custom = document.createElement('option');
+        custom.value = currentValue;
+        custom.textContent = currentValue + 'ms';
+        custom.selected = true;
+        select.insertBefore(custom, select.firstChild);
+      }
+      return select;
+    }
+
+    function createDelaySelect(currentValue) {
+      var select = document.createElement('select');
+      var hasCurrentValue = false;
+      DELAY_OPTIONS.forEach(function(ms) {
+        var opt = document.createElement('option');
+        opt.value = ms;
+        opt.textContent = ms + 'ms';
+        if (ms === currentValue) { opt.selected = true; hasCurrentValue = true; }
+        select.appendChild(opt);
+      });
+      if (!hasCurrentValue && currentValue) {
+        var custom = document.createElement('option');
+        custom.value = currentValue;
+        custom.textContent = currentValue + 'ms';
+        custom.selected = true;
+        select.insertBefore(custom, select.firstChild);
+      }
+      return select;
+    }
+
+    // ================================================================
+    // GENERATE BUTTON STATE
+    // ================================================================
+
+    function updateGenerateButton() {
+      var btn = document.getElementById('btnGenerate');
+      var errorMsg = document.getElementById('generateErrorMsg');
+      var hasTarget = !!state.targetNodeId;
+      var hasTracks = state.tracks.length > 0;
+
+      // Encontrar componentes sem propriedades
+      var emptyTracks = state.tracks.filter(function(t) { return t.animations.length === 0; });
+      var allHaveAnims = hasTracks && emptyTracks.length === 0;
+
+      // Verificar campos From/To preenchidos
+      var fieldsIncomplete = allHaveAnims && hasFieldValidationErrors();
+
+      // Botão só habilita se: tem target + tem tracks + TODOS têm animação + TODOS os campos preenchidos
+      btn.disabled = !(hasTarget && allHaveAnims && !fieldsIncomplete);
+
+      // Se todos os campos estão válidos, desativar modo de validação
+      if (!fieldsIncomplete && validationActive) {
+        validationActive = false;
+        // Limpar erros visuais remanescentes
+        var errorInputs = document.querySelectorAll('.field-error');
+        for (var i = 0; i < errorInputs.length; i++) {
+          errorInputs[i].classList.remove('field-error');
+        }
+        var errorMsgs = document.querySelectorAll('.field-validation-msg.visible');
+        for (var j = 0; j < errorMsgs.length; j++) {
+          errorMsgs[j].classList.remove('visible');
+        }
+        var errorCards = document.querySelectorAll('.property-card.has-field-error');
+        for (var k = 0; k < errorCards.length; k++) {
+          errorCards[k].classList.remove('has-field-error');
+        }
+      }
+
+      // Mensagem de erro contextual (prioridade: sem props > campos vazios > sem target)
+      if (hasTracks && emptyTracks.length > 0) {
+        var names = emptyTracks.map(function(t) { return '"' + t.name + '"'; });
+        if (names.length === 1) {
+          errorMsg.textContent = names[0] + ' não tem propriedades adicionadas';
+        } else if (names.length <= 3) {
+          errorMsg.textContent = names.join(', ') + ' não têm propriedades adicionadas';
+        } else {
+          errorMsg.textContent = names.length + ' componentes não têm propriedades adicionadas';
+        }
+        errorMsg.classList.add('visible');
+      } else if (fieldsIncomplete && validationActive) {
+        var errors = getDetailedValidationErrors();
+        if (errors.length === 1) {
+          errorMsg.textContent = 'Preencha ' + errors[0].missing.join(' e ') + ' em "' + errors[0].trackName + '" → Prop. ' + errors[0].animLetter + ' (' + errors[0].propType + ')';
+        } else {
+          errorMsg.textContent = errors.length + ' propriedades com campos incompletos';
+        }
+        errorMsg.classList.add('visible');
+      } else if (!hasTarget && hasTracks) {
+        errorMsg.textContent = 'Nenhum frame selecionado no Step 1';
+        errorMsg.classList.add('visible');
+      } else {
+        errorMsg.textContent = '';
+        errorMsg.classList.remove('visible');
+      }
+    }
+
+    // ================================================================
+    // FIELD VALIDATION
+    // ================================================================
+
+    /** Verifica se há campos From/To vazios em qualquer propriedade */
+    function hasFieldValidationErrors() {
+      for (var i = 0; i < state.tracks.length; i++) {
+        var track = state.tracks[i];
+        for (var j = 0; j < track.animations.length; j++) {
+          var anim = track.animations[j];
+          var prop = anim.properties[0] || {};
+          var propType = anim.preset || 'position';
+
+          if (!prop.from || !prop.from.toString().trim()) return true;
+          if (!prop.to || !prop.to.toString().trim()) return true;
+
+          if (propType === 'scale') {
+            if (!prop.fromPercent || !prop.fromPercent.toString().trim()) return true;
+            if (!prop.toPercent || !prop.toPercent.toString().trim()) return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    /** Retorna lista detalhada de erros de validação */
+    function getDetailedValidationErrors() {
+      var errors = [];
+      state.tracks.forEach(function(track) {
+        track.animations.forEach(function(anim, animIdx) {
+          var propType = anim.preset || 'position';
+          var prop = anim.properties[0] || {};
+          var letter = String.fromCharCode(65 + animIdx);
+          var propLabel = PROPERTY_TYPES.find(function(p) { return p.value === propType; });
+          var propLabelText = propLabel ? propLabel.label : capitalize(propType);
+          var missing = [];
+
+          if (!prop.from || !prop.from.toString().trim()) missing.push('From');
+          if (!prop.to || !prop.to.toString().trim()) missing.push('To');
+
+          if (propType === 'scale') {
+            if (!prop.fromPercent || !prop.fromPercent.toString().trim()) missing.push('From (%)');
+            if (!prop.toPercent || !prop.toPercent.toString().trim()) missing.push('To (%)');
+          }
+
+          if (missing.length > 0) {
+            errors.push({
+              trackId: track.id,
+              trackName: track.name,
+              animId: anim.id,
+              animLetter: letter,
+              propType: propLabelText,
+              missing: missing
+            });
+          }
+        });
+      });
+      return errors;
+    }
+
+    /**
+     * Adiciona suporte de validação a um campo requerido.
+     * Insere mensagem de erro abaixo do input e aplica classe se necessário.
+     */
+    function addFieldValidation(field, input) {
+      input.setAttribute('data-required', 'true');
+
+      var errorEl = document.createElement('p');
+      errorEl.className = 'field-validation-msg';
+      errorEl.textContent = 'Preencha este campo para continuar';
+      field.appendChild(errorEl);
+
+      // Se validação ativa e campo vazio → mostrar erro imediatamente
+      if (validationActive && !input.value.trim()) {
+        input.classList.add('field-error');
+        errorEl.classList.add('visible');
+      }
+    }
+
+    // ================================================================
+    // HELPERS
+    // ================================================================
+
+    function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function addLog(message, type) {
+      type = type || 'info';
+      var entry = document.createElement('div');
+      entry.className = 'log-entry' + (type !== 'info' ? ' ' + type : '');
+      var time = document.createElement('span');
+      time.className = 'log-time';
+      var now = new Date();
+      time.textContent = now.getHours().toString().padStart(2, '0') + ':' +
+                         now.getMinutes().toString().padStart(2, '0') + ':' +
+                         now.getSeconds().toString().padStart(2, '0');
+      var text = document.createElement('span');
+      text.textContent = message;
+      entry.appendChild(time);
+      entry.appendChild(text);
+      var logList = document.getElementById('logList');
+      logList.appendChild(entry);
+      logList.scrollTop = logList.scrollHeight;
+      while (logList.children.length > 15) logList.removeChild(logList.firstChild);
+    }
+
+    /** Map new property model to code.ts animation format */
+    function mapTracksForGeneration(tracks) {
+      return tracks.map(function(track) {
+        return {
+          id: track.id,
+          name: track.name,
+          color: track.color,
+          animations: track.animations.map(function(anim) {
+            var prop = anim.properties[0] || {};
+            var mappedProp = {
+              type: prop.type || 'opacity',
+              from: prop.from || '0',
+              to: prop.to || '0'
+            };
+
+            // Position: passar axis e valores individuais
+            if (prop.type === 'position') {
+              mappedProp.axis = prop.axis || 'Y';
+              if (mappedProp.axis === 'Y') {
+                mappedProp.fromY = prop.from || '0';
+                mappedProp.toY = prop.to || '0';
+                mappedProp.fromX = '0';
+                mappedProp.toX = '0';
+              } else {
+                mappedProp.fromX = prop.from || '0';
+                mappedProp.toX = prop.to || '0';
+                mappedProp.fromY = '0';
+                mappedProp.toY = '0';
+              }
+            }
+
+            // Scale: passar dimension e porcentagens
+            if (prop.type === 'scale') {
+              mappedProp.dimension = prop.dimension || 'W';
+              mappedProp.fromPercent = prop.fromPercent || '0';
+              mappedProp.toPercent = prop.toPercent || '100';
+            }
+
+            return {
+              id: anim.id,
+              preset: anim.preset,
+              properties: [mappedProp],
+              duration: anim.duration,
+              delay: anim.delay,
+              easing: anim.easing
+            };
+          })
+        };
+      });
+    }
+
+    // ================================================================
+    // GENERATE
+    // ================================================================
+
+    function doGenerate() {
+      var btn = document.getElementById('btnGenerate');
+      if (btn.disabled) return;
+
+      if (!state.targetNodeId) { addLog('Defina um frame target primeiro.', 'error'); return; }
+      if (state.tracks.length === 0) { addLog('Adicione pelo menos um componente.', 'error'); return; }
+      var hasAnims = state.tracks.some(function(t) { return t.animations.length > 0; });
+      if (!hasAnims) { addLog('Adicione propriedades aos componentes.', 'error'); return; }
+
+      btn.classList.add('loading');
+      btn.disabled = true;
+      addLog('Gerando timeline...', 'info');
+
+      var mappedTracks = mapTracksForGeneration(state.tracks);
+
+      // Construir triggerAction dinamicamente a partir do tipo + nomes dos componentes
+      var finalTriggerAction = buildTriggerActionText();
+
+      parent.postMessage({
+        pluginMessage: {
+          type: 'generate-timeline',
+          targetNodeId: state.targetNodeId,
+          tracks: mappedTracks,
+          msPerTick: state.msPerTick,
+          triggerType: state.triggerType || 'tap',
+          triggerLabel: '',
+          triggerAction: finalTriggerAction,
+          triggerComponentName: state.triggerComponentName || '',
+          stepTitle: state.stepTitle
+        }
+      }, '*');
+    }
+
+    // ================================================================
+    // EVENT LISTENERS
+    // ================================================================
+
+    // Back button
+    document.getElementById('btnBack').addEventListener('click', function() {
+      if (state.currentStep > 1) {
+        goToStep(state.currentStep - 1);
+      }
+    });
+
+    // Step 1: Select target
+    document.getElementById('btnSelectTarget').addEventListener('click', function() {
+      addLog('Buscando selecao no canvas...');
+      parent.postMessage({ pluginMessage: { type: 'get-selection' } }, '*');
+    });
+
+    // Step 1: Next
+    document.getElementById('btnNext1').addEventListener('click', function() {
+      if (state.targetNodeId) goToStep(2);
+    });
+
+    // Step 3: AE JSON Import — Drag & Drop
+    (function() {
+      var dropZone = document.getElementById('aeDropZone');
+      var fileInput = document.getElementById('aeFileInput');
+      var filePicker = document.getElementById('aeFilePicker');
+
+      // Click on "selecione um arquivo" link
+      if (filePicker) {
+        filePicker.addEventListener('click', function(e) {
+          e.stopPropagation();
+          fileInput.click();
+        });
+      }
+
+      // Click anywhere on the drop zone
+      dropZone.addEventListener('click', function() {
+        fileInput.click();
+      });
+
+      // File input change
+      fileInput.addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        if (file) {
+          handleAEImport(file);
+          e.target.value = ''; // reset para permitir re-import do mesmo arquivo
+        }
+      });
+
+      // Drag enter
+      dropZone.addEventListener('dragenter', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('dragover');
+      });
+
+      // Drag over
+      dropZone.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('dragover');
+      });
+
+      // Drag leave
+      dropZone.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Só remove se saiu do drop zone mesmo (não de um filho)
+        if (!dropZone.contains(e.relatedTarget)) {
+          dropZone.classList.remove('dragover');
+        }
+      });
+
+      // Drop
+      dropZone.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('dragover');
+
+        var files = e.dataTransfer.files;
+        if (files.length > 0) {
+          var file = files[0];
+          if (file.type === 'application/json' || file.name.endsWith('.json')) {
+            handleAEImport(file);
+          } else {
+            showDropZoneError(dropZone, 'Arquivo inválido. Por favor, arraste um arquivo .json');
+            addLog('Arquivo inválido: ' + file.name, 'error');
+          }
+        }
+      });
+    })();
+
+    // Step 2: field listeners
+    document.getElementById('stepTitle').addEventListener('input', function() {
+      state.stepTitle = this.value;
+      saveState();
+    });
+    document.getElementById('msPerTick').addEventListener('change', function() {
+      state.msPerTick = parseInt(this.value) || 50;
+      saveState();
+    });
+    document.getElementById('triggerType').addEventListener('change', function() {
+      state.triggerType = this.value;
+      state.triggerAction = buildTriggerActionText();
+      updateTriggerComponentFieldVisibility();
+      updateTriggerPreview();
+      saveState();
+    });
+    document.getElementById('triggerComponentName').addEventListener('input', function() {
+      state.triggerComponentName = this.value;
+      // Limpar erro inline ao digitar
+      if (this.value.trim()) {
+        clearStep2Errors();
+      }
+      updateStep2Button();
+      updateTriggerPreview();
+      saveState();
+    });
+
+    // Step 2: Next
+    document.getElementById('btnNext2').addEventListener('click', function() {
+      if (!this.disabled) goToStep(3);
+    });
+    // Click no footer do Step 2 quando botão está desabilitado → mostra erros
+    (function() {
+      var btnNext2 = document.getElementById('btnNext2');
+      var step2Msg = document.getElementById('step2ErrorMsg');
+      btnNext2.parentElement.addEventListener('click', function(e) {
+        if (btnNext2.disabled && e.target !== step2Msg) {
+          showStep2Errors();
+          // Flash da mensagem
+          step2Msg.classList.remove('visible');
+          void step2Msg.offsetWidth;
+          step2Msg.classList.add('visible');
+        }
+      });
+    })();
+
+    // Step 3: Add component
+    document.getElementById('btnAddComponent').addEventListener('click', function() {
+      // Fechar todos os componentes e propriedades abertos → foco no novo
+      Object.keys(expandedComps).forEach(function(k) { expandedComps[k] = false; });
+      Object.keys(expandedProps).forEach(function(k) { expandedProps[k] = false; });
+
+      var track = createTrack();
+      renderStep3();
+      updateGenerateButton();
+      addLog('Componente adicionado: "' + track.name + '"', 'success');
+
+      // Scroll suave até o novo componente
+      setTimeout(function() {
+        var newCard = document.querySelector('[data-track-id="' + track.id + '"]');
+        if (newCard) newCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    });
+
+    // Step 3: Generate
+    document.getElementById('btnGenerate').addEventListener('click', doGenerate);
+
+    // Click no footer do Step 3 quando botão está desabilitado → mostra mensagem + valida campos
+    (function() {
+      var btnGen = document.getElementById('btnGenerate');
+      var errMsg = document.getElementById('generateErrorMsg');
+      // Usar pointerdown no parent para capturar click em botão disabled
+      btnGen.parentElement.addEventListener('click', function(e) {
+        if (btnGen.disabled && e.target !== errMsg) {
+          // Ativar validação inline se houver campos vazios
+          if (hasFieldValidationErrors()) {
+            validationActive = true;
+
+            // Auto-expandir cards com erros
+            var errors = getDetailedValidationErrors();
+            errors.forEach(function(err) {
+              expandedComps[err.trackId] = true;
+              expandedProps[err.animId] = true;
+            });
+
+            // Re-renderizar para mostrar erros inline
+            renderStep3();
+
+            // Scroll até o primeiro campo com erro
+            setTimeout(function() {
+              var firstError = document.querySelector('input.field-error');
+              if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.focus();
+              }
+            }, 100);
+          }
+
+          // Atualizar mensagem de erro no CTA
+          updateGenerateButton();
+
+          // Flash da mensagem: piscar para chamar atenção
+          errMsg.classList.remove('visible');
+          void errMsg.offsetWidth; // force reflow
+          errMsg.classList.add('visible');
+          errMsg.style.animation = 'none';
+          void errMsg.offsetWidth;
+          errMsg.style.animation = '';
+        }
+      });
+    })();
+
+    // Listener global para limpar erros inline ao digitar em campos validados
+    (function() {
+      var trackList = document.getElementById('trackList');
+      if (trackList) {
+        trackList.addEventListener('input', function(e) {
+          var input = e.target;
+          if (input && input.tagName === 'INPUT' && input.hasAttribute('data-required')) {
+            var field = input.closest('.andes-field');
+            if (input.value.trim()) {
+              input.classList.remove('field-error');
+              if (field) {
+                var errEl = field.querySelector('.field-validation-msg');
+                if (errEl) errEl.classList.remove('visible');
+              }
+            } else if (validationActive) {
+              input.classList.add('field-error');
+              if (field) {
+                var errEl = field.querySelector('.field-validation-msg');
+                if (errEl) errEl.classList.add('visible');
+              }
+            }
+          }
+        }, true);
+      }
+    })();
+
+    // Export/Import (botões ocultos, mas mantém suporte a atalho de teclado)
+    var fileImportEl = document.getElementById('fileImport');
+    if (fileImportEl) {
+      fileImportEl.addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        if (file) { importJSON(file); e.target.value = ''; }
+      });
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      var isMeta = e.ctrlKey || e.metaKey;
+      if (isMeta && e.key === 'g') { e.preventDefault(); doGenerate(); }
+      if (isMeta && e.key === 'e') {
+        e.preventDefault();
+        if (state.tracks.length > 0) exportJSON();
+        else addLog('Nada para exportar.', 'error');
+      }
+      if (isMeta && e.key === 'n') {
+        e.preventDefault();
+        if (state.currentStep === 3) {
+          var track = createTrack();
+          renderStep3();
+          updateGenerateButton();
+          addLog('Componente adicionado: "' + track.name + '"', 'success');
+        }
+      }
+    });
+
+    // ================================================================
+    // MESSAGES FROM PLUGIN CODE
+    // ================================================================
+
+    window.onmessage = function(event) {
+      var msg = event.data.pluginMessage;
+      if (!msg) return;
+
+      switch (msg.type) {
+        case 'selection-result':
+          if (msg.success) {
+            state.targetNodeId = msg.data.id;
+            state.targetNodeName = msg.data.name;
+            state.targetNodeMeta = msg.data.nodeType + ' · ' + Math.round(msg.data.width) + 'x' + Math.round(msg.data.height);
+            saveState();
+            renderStep1();
+            addLog('Target: "' + msg.data.name + '"', 'success');
+          } else {
+            state.targetNodeId = null;
+            state.targetNodeName = null;
+            state.targetNodeMeta = '';
+            saveState();
+            renderStep1();
+            addLog(msg.error, 'error');
+          }
+          break;
+
+        case 'selection-changed':
+          if (msg.data) {
+            if (!state.targetNodeId) {
+              state.targetNodeId = msg.data.id;
+              state.targetNodeName = msg.data.name;
+              state.targetNodeMeta = msg.data.nodeType + ' · ' + Math.round(msg.data.width) + 'x' + Math.round(msg.data.height);
+              saveState();
+              if (state.currentStep === 1) renderStep1();
+              addLog('Auto-detect: "' + msg.data.name + '"', 'success');
+            }
+          }
+          break;
+
+        case 'generate-result':
+          var btn = document.getElementById('btnGenerate');
+          btn.classList.remove('loading');
+          updateGenerateButton();
+          if (msg.success) {
+            var d = msg.data;
+            var regen = d.regenerated ? ' (substituiu)' : '';
+            addLog('Timeline gerada! ' + d.trackCount + ' tracks, ' + d.animCount + ' anims, ' + d.maxMs + 'ms' + regen, 'success');
+            // Limpar mensagem de erro se houver
+            var genErr = document.getElementById('generateErrorMsg');
+            if (genErr) { genErr.textContent = ''; genErr.classList.remove('visible'); }
+          } else {
+            addLog('Erro: ' + msg.error, 'error');
+            // Mostrar erro visível abaixo do botão CTA
+            var genErr = document.getElementById('generateErrorMsg');
+            if (genErr) {
+              genErr.textContent = msg.error || 'Erro desconhecido ao gerar timeline';
+              genErr.classList.add('visible');
+            }
+          }
+          break;
+      }
+    };
+
+    // ================================================================
+    // INIT
+    // ================================================================
+
+    loadState();
+    goToStep(state.currentStep || 1);
+    addLog('Plugin iniciado. Selecione um Frame no canvas.');
+  </script>
+
+</body>
+</html>

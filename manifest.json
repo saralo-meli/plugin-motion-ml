@@ -1,0 +1,8 @@
+{
+  "name": "Motion Handoff Timeline Builder",
+  "id": "motion-handoff-timeline-builder-001",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"]
+}
